@@ -1,16 +1,24 @@
-const path = require('path')
-if (process.env.NODE_ENV !== 'production') require("dotenv").config({ path: path.resolve(__dirname, `../config/${process.env.NODE_ENV}.env`)})
+const app = require('./app')
 
-const express = require('express');
-const app = express();
+const http = require('http')
+const socketio = require('socket.io')
+const server = http.createServer(app)
+const io = socketio(server) 
+
+console.log('before connecting')
+io.on('connection',(socket)=>{
+    console.log('IO connect')
+
+    socket.emit('welcomeEvent')
+    socket.on('join',(message)=>{
+        console.log('Joined the room.'+message)
+    })
+})
 
 
-const publicDirectoryPath = path.join(__dirname,'../public')
-app.use(express.static(publicDirectoryPath))
-
-const port = process.env.PORT
+const port = 20000||process.env.PORT
 
 
-app.listen(port, ()=>{
+server.listen(port, ()=>{
     console.log('hello world'+port)
 })
