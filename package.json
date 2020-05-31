@@ -1,0 +1,30 @@
+{
+  "name": "cah",
+  "version": "1.0.0",
+  "description": "Cards Against Humanity is a witty game that can be enjoyed in the company of friends. This application serves as a rendition of the same.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "NODE_ENV=dev nodemon src/index.js -e html,js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tazzzzzzz/cards-against-humanity.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tazzzzzzz/cards-against-humanity/issues"
+  },
+  "homepage": "https://github.com/tazzzzzzz/cards-against-humanity#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
