@@ -1,0 +1,74 @@
+#login{
+    width: 20%;
+    height: 50vh;
+    background-color: white;
+    border-radius: 4px;
+    padding: 2em 2em;
+    line-height: 3.23em;
+    box-shadow: -1.5px 1.5px 5px rgb(235, 228, 228), 1.5px -1.5px 5px rgb(235, 228, 228);
+    margin-top: 8em;
+    margin-left: 15%;
+}
+
+#title{
+    width: 40%;
+    height: 45%;
+    color: white;
+    margin-top: 5em;
+    margin-left: 5em;
+    padding-left: 3em;
+    line-height: 2em;
+}
+
+span{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+}
+
+.formLabel{
+    font-size: 24px;
+    font-family: 'Kalam', cursive;
+}
+
+.formInput{
+    height: 3em;
+    width: 85%;
+    font-size: 16px;
+    padding-left: 1em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.secondItem{
+    position: relative;
+    top: 1.12em;
+}
+
+.formInput::placeholder{
+    color: rgb(104, 104, 104);
+}
+
+.btn-primary{
+    width: 92%;
+    height: 2.6em;
+    background-color: white;
+    outline: none;
+    border: 2px solid black;
+    font-size: 21px;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 3px;
+    transition: 0.25s all ease;
+}
+
+.btn-primary:hover{
+    background-color: black;
+    outline: none;
+    color: white;
+    cursor: pointer;
+}
+
+#title p{
+    font-size: 110px;
+    font-family: 'Bangers', cursive;
+}
