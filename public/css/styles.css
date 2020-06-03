@@ -1,6 +1,6 @@
 #login{
     width: 20%;
-    height: 50vh;
+    height: 55vh;
     background-color: white;
     border-radius: 4px;
     padding: 2em 2em;
@@ -20,8 +20,8 @@
 }
 
 .welcomeTitle{
-    margin-left: 38%;
-    margin-top: 12%;
+    margin-left: 36%;
+    margin-top: 10%;
 }
 
 span{
