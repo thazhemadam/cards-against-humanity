@@ -7,33 +7,44 @@
     line-height: 3.23em;
     box-shadow: -1.5px 1.5px 5px rgb(235, 228, 228), 1.5px -1.5px 5px rgb(235, 228, 228);
     margin-top: 8em;
-    margin-left: 15%;
+    margin-left: 10%;
 }
 
 .title{
-    width: 40%;
+    width: 50%;
     height: 45%;
-    margin-top: 7em;
+    font-size: 1em;
+    margin-top: 4em;
     margin-left: 5em;
     padding-left: 3em;
-    line-height: 2em;
+    line-height: 6.5em;
 }
 
 .welcomeTitle{
     margin-left: 36%;
     margin-top: 10%;
+    line-height: 4em;
+}
+
+.welcomeTitle p{
+    
+    font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
+    padding: 0;
+    line-height: 0;
+    font-size: 7rem;
+    color:white;
 }
 
 span{
     font-size: 25px;
     font-weight: bold;
     text-align: center;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'HelveticaNeueW02-75Bold',   'Oswald', sans-serif;
 }
 
 .formLabel{
     font-size: 24px;
-    font-family: 'Kalam', cursive;
+    font-family: 'HelveticaNeueW02-75Bold',   'Kalam', cursive;
 }
 
 .formInput{
@@ -41,7 +52,7 @@ span{
     width: 85%;
     font-size: 16px;
     padding-left: 1em;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'HelveticaNeueW02-75Bold',   'Roboto', sans-serif;
 }
 
 .secondItem{
@@ -60,7 +71,7 @@ span{
     outline: none;
     border: 2px solid black;
     font-size: 21px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'HelveticaNeueW02-75Bold',   'Oswald', sans-serif;
     letter-spacing: 3px;
     transition: 0.25s all ease;
 }
@@ -74,7 +85,7 @@ span{
 
 .title p{
     font-size: 110px;
-    font-family: 'Bangers', cursive;
+    font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
 }
 
 .btn-secondary{
@@ -86,7 +97,7 @@ span{
     border: 2px solid black;
     border-radius: 4px;
     text-decoration: none;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'HelveticaNeueW02-75Bold',   'Oswald', sans-serif;
     color: white;
     font-size: 21px;
     padding: 12px 20%;
