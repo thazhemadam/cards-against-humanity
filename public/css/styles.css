@@ -10,14 +10,18 @@
     margin-left: 15%;
 }
 
-#title{
+.title{
     width: 40%;
     height: 45%;
-    color: white;
-    margin-top: 5em;
+    margin-top: 7em;
     margin-left: 5em;
     padding-left: 3em;
     line-height: 2em;
+}
+
+.welcomeTitle{
+    margin-left: 38%;
+    margin-top: 12%;
 }
 
 span{
@@ -68,7 +72,28 @@ span{
     cursor: pointer;
 }
 
-#title p{
+.title p{
     font-size: 110px;
     font-family: 'Bangers', cursive;
+}
+
+.btn-secondary{
+    width: 55%;
+    height: 4.6em;
+    background-color: black;
+    color: white;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    font-size: 21px;
+    padding: 12px 20%;
+    transition: 0.25s all ease;
+}
+
+.btn-secondary:hover{
+    color: black;
+    background: white;
 }
