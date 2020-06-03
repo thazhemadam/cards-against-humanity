@@ -1,24 +1,24 @@
-const app = require('./app')
+const app = require('./app');
 
-const http = require('http')
-const socketio = require('socket.io')
-const server = http.createServer(app)
-const io = socketio(server) 
+const http = require('http');
+const socketio = require('socket.io');
+const server = http.createServer(app);
+const io = socketio(server);
 
 console.log('before connecting')
 io.on('connection',(socket)=>{
-    console.log('IO connect')
+    console.log('IO connect');
 
-    socket.emit('welcomeEvent')
+    socket.emit('welcomeEvent');
     socket.on('join',(message)=>{
-        console.log('Joined the room.'+message)
-    })
-})
+        console.log('Joined the room.'+message);
+    });
+});
 
 
-const port = 20000||process.env.PORT
+const port = process.env.PORT||20000;
 
 
 server.listen(port, ()=>{
-    console.log('hello world'+port)
+    console.log('hello world'+port);
 })
