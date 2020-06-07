@@ -39,12 +39,12 @@ span{
     font-size: 25px;
     font-weight: bold;
     text-align: center;
-    font-family: 'HelveticaNeueW02-75Bold',   'Oswald', sans-serif;
+    font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
 }
 
 .formLabel{
     font-size: 24px;
-    font-family: 'HelveticaNeueW02-75Bold',   'Kalam', cursive;
+    font-family: 'HelveticaNeueW02-75Bold', 'Kalam', cursive;
 }
 
 .formInput{
@@ -52,7 +52,7 @@ span{
     width: 85%;
     font-size: 16px;
     padding-left: 1em;
-    font-family: 'HelveticaNeueW02-75Bold',   'Roboto', sans-serif;
+    font-family: 'HelveticaNeueW02-75Bold', 'Roboto', sans-serif;
 }
 
 .secondItem{
@@ -71,7 +71,7 @@ span{
     outline: none;
     border: 2px solid black;
     font-size: 21px;
-    font-family: 'HelveticaNeueW02-75Bold',   'Oswald', sans-serif;
+    font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
     letter-spacing: 3px;
     transition: 0.25s all ease;
 }
@@ -94,10 +94,10 @@ span{
     background-color: black;
     color: white;
     outline: none;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 4px;
     text-decoration: none;
-    font-family: 'HelveticaNeueW02-75Bold',   'Oswald', sans-serif;
+    font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
     color: white;
     font-size: 21px;
     padding: 12px 20%;

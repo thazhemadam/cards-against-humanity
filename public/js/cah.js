@@ -1,17 +1,10 @@
-const socket = io()
+const socket = io();
+const {name, roomid}=Qs.parse(location.search, {ignoreQueryPrefix: true});
+console.log(Qs.parse(location.search, {ignoreQueryPrefix: true}));
 
-socket.on('welcomeEvent',()=>{
-    console.log('hello')
-})
-
-const $roomJoin = document.getElementById("roomJoin")
-const $playCAH = document.getElementById('CAH')
-if($roomJoin)
-{$roomJoin.addEventListener("click", (e)=>{
-    socket.emit('join','room joined.')
-})
-}
-if($playCAH){
-$playCAH.addEventListener("click", (e)=>{
-    socket.emit('join','Cah Initialized.')
-})}
+socket.emit('create', {name, roomid}, (err)=>{
+    if(err){
+        alert(err);
+        window.location.href="/";
+    }
+});
