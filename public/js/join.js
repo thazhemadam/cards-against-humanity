@@ -1,17 +1,18 @@
-console.log('This is the join page');
 
-//url must be created using the form details.
-const url = '/join'
+const $joinRoomForm = document.getElementById('join-room')
 
-const roomJoinStatus = async () => {
+// Check if such a room with the given room id exists true or not.
+const roomJoinStatus = async (_id) => {
+    const url = '/join'+(_id?'?id='+_id:'')
     return await fetch(url).then(async (response) =>{
-        return await response.json().then((data)=> (data.error?data.error:data.status));
+        return await response.json().then((data)=> (data.error?false:data.status));
     });
 }
 
+$joinRoomForm.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    const $_id = document.getElementById('join-room-id').value.trim();
+    const result = await roomJoinStatus($_id);
+    result?location.replace("/html/room.html?id="+$_id):alert("Sorry. Looks like you didn't get that room ID right");
+})
 
-const hostReq = async () => {
-    const error = await roomJoinStatus();
-    console.log(error);
-}
-hostReq();

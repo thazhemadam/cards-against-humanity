@@ -1,17 +1,18 @@
-console.log("This is the host page");
-
-
 //getRoomID will return the room ID.
-const url = "/host?roomname=testroom"
-const getRoomID = async () => {
+
+const getRoomID = async (name) => {
+    const url = "/host?roomname="+name
     return await fetch(url).then(async (response) =>{
-        return await response.json().then((data)=> (data.roomid))
+        return await response.json().then((data)=> (data.error?false:data._id))
     })
 }
 
-//Make a request to the page
-const hostReq = async () => {
-    const _id = await getRoomID();
+
+$hostRoom = document.getElementById('host-room');
+$hostRoom.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    $name=document.getElementById('room-name').value.trim();
+    const _id = await getRoomID($name).then((data)=>(data));
     console.log(_id);
-}
-hostReq();
+    // _id?location.replace("/html/room.html?id="+_id):alert("Sorry. Looks like you didn't get that room ID right");
+})

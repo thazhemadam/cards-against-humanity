@@ -44,5 +44,5 @@ const port = process.env.PORT||20000;
 
 
 server.listen(port, ()=>{
-    console.log('hello world'+port);
+    console.log('Server up and running on port '+port);
 })

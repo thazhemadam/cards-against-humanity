@@ -6,7 +6,7 @@
     <title>Room Join</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" href="/assets/cah-icon.png" type="image/png" />
-    <link href="https://db.onlinewebfonts.com/c/0c96daa6c25910a00efd1f0ea3c5c02d?family=Helvetica+Neue+W02+75+Bold" rel="stylesheet" type="text/css"/>
+    <link href="https://db.onlinewebfonts.com/c/0c96daa6c25910a00efd1f0ea3c5c02d?family=HelveticaNeueW02-75Bold" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
@@ -20,12 +20,12 @@
 
     <div id="login">
         <span>Let's Get This Party Started</span> 
-        <form action="./room.html" style="margin-top: 2em;" id="join">
+        <form id="join-room" action="./room.html" style="margin-top: 2em;" id="join">
             <label for="name" class="formLabel">Name</label><br/>
 
             <input type="text" name="name" placeholder="Name" class="formInput" required autocomplete="off"/><br/>
             <label for="roomid" class="formLabel secondItem">Room ID</label><br/>
-            <input type="text" name="roomid" placeholder="Room Id" class="formInput secondItem" required autocomplete="off" /><br/><br/>
+            <input type="text" id="join-room-id" placeholder="Room Id" class="formInput secondItem" required autocomplete="off" /><br/><br/>
             <input type="submit" value="Join" class="btn-primary"/> 
         </form>
     </div>
