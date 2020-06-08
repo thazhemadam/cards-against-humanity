@@ -2,7 +2,7 @@ console.log("This is the host page");
 
 
 //getRoomID will return the room ID.
-const url = "/host?roomname=jacoobie"
+const url = "/host?roomname=testroom"
 const getRoomID = async () => {
     return await fetch(url).then(async (response) =>{
         return await response.json().then((data)=> (data.roomid))
@@ -12,6 +12,6 @@ const getRoomID = async () => {
 //Make a request to the page
 const hostReq = async () => {
     const _id = await getRoomID();
-    // console.log(_id);
+    console.log(_id);
 }
 hostReq();
