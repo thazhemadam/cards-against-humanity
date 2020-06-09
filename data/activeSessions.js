@@ -1,3 +1,3 @@
-let rooms = [];
+let rooms = new Map();
 
 module.exports = rooms;

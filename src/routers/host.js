@@ -12,7 +12,7 @@ const sessions = require('../../data/activeSessions')
 const host = new express.Router();
 
 const createID = (name) => {
-    return _id = jwt.sign({name},process.env.JWT_SECRET_KEY);
+    return jwt.sign({name},process.env.JWT_SECRET_KEY);
 }
 
 host.get('/host', async (req, res) => {
@@ -22,11 +22,10 @@ host.get('/host', async (req, res) => {
     if(!roomName){
         return {error: 'Please enter room name.'}
     }
-    console.log(req.query)
     const _id = createID(req.query.roomname);
-    sessions.push(_id);
-    console.log(sessions)
-    res.send({_id:_id});
+    sessions.set(_id, roomName);
+    console.log(sessions);
+    res.send({_id});
 })
 
 
