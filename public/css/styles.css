@@ -1,33 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 #login{
     width: 20%;
-    height: 55vh;
+    height: 56vh;
     background-color: white;
     border-radius: 4px;
     padding: 2em 2em;
-    line-height: 3.23em;
     box-shadow: -1.5px 1.5px 5px rgb(235, 228, 228), 1.5px -1.5px 5px rgb(235, 228, 228);
     margin-top: 8em;
     margin-left: 10%;
 }
 
 .title{
+    font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
+    margin-left: 10%;
+    margin-top: 8em;
     width: 50%;
-    height: 45%;
+    height: 40em;
     font-size: 1em;
-    margin-top: 4em;
-    margin-left: 5em;
-    padding-left: 3em;
-    line-height: 6.5em;
-}
-
-.welcomeTitle{
-    margin-left: 36%;
-    margin-top: 10%;
-    line-height: 4em;
 }
 
 .welcomeTitle p{
-    
+    position: relative;
+    top: 0.5em;
+}
+
+.welcomeTitle a{
+    position: relative;
+    top: 7em;
+}
+
+.welcomeTitle{
+    margin-left: 26%;
+    margin-top: 6%;
+    line-height: 6.5em;
+    text-align: center;
+}
+
+.welcomeTitle p{
     font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
     padding: 0;
     line-height: 0;
@@ -49,7 +63,7 @@ span{
 
 .formInput{
     height: 3em;
-    width: 85%;
+    width: 92%;
     font-size: 16px;
     padding-left: 1em;
     font-family: 'HelveticaNeueW02-75Bold', 'Roboto', sans-serif;
@@ -89,8 +103,6 @@ span{
 }
 
 .btn-secondary{
-    width: 55%;
-    height: 4.6em;
     background-color: black;
     color: white;
     outline: none;
@@ -100,11 +112,36 @@ span{
     font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
     color: white;
     font-size: 21px;
-    padding: 12px 20%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15%;
+    padding-right: 15%;
     transition: 0.25s all ease;
 }
 
 .btn-secondary:hover{
     color: black;
     background: white;
+}
+
+nav{
+    width: 100%;
+    height: 5em;
+    background-color: black;
+    color: white;
+}
+
+nav ul{
+    display: flex;
+    float: right;
+    list-style: none;
+    font-size: 20px;
+}
+
+nav ul li{
+    width: 7em;
+    padding-top: 9%;
+    padding-bottom: 9%;
+    text-align: center;
+    border: 1px solid white;
 }
