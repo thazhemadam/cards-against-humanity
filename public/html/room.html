@@ -1,19 +1,55 @@
 <html>
     <head>
         <link rel="icon" href="/assets/cah-icon.png" type="image/png" />
+        <link rel="stylesheet" href="../css/cah.css">
         <title>
             CAH Room
         </title>
         <h1>CAH Room</h1>
     </head>
     <body>
-        <br>
-        Play CAH with your friends from this page!
-        <div id = 'room-details'>
-            <button id='copy-link'>Copy Link</button>
-        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <!-- Room Details -->
+                <br>
+                Play CAH with your friends from this page!
+                <div id = 'room-details'>
+                    <button id='copy-link'>Copy Link</button>
+                </div>       
+            </div>
+            <div class="grid-item">
+                <!-- Cards -->
+            </div>
+            <div class="grid-item">
+                <!-- Chat -->
+
+                <div id='chat-section' class="chat">
+        
+                    <div id = "sidebarTemplateArea" class = "chat__sidebar">
+                        
+                    </div>
+        
+                    <div class = "chat__main">
+        
+                        <div id = 'messageTemplateArea' class = "chat__messages"></div>
+        
+                        <div class="compose">
+        
+                            <form id = 'message-form'>
+                                <input name='message' placeholder="Message" type="text" required autocomplete="off">
+                                <button>Send</button>
+                            </form>
+
+        
+                        </div>
+                    </div>
+                </div>
+                <input id='chat-toggle' type="button" value='Close Chat'></button>
+ 
+            </div>
+          </div>
     </body>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha256-ijqLssetA1NMNjZ+w1zaUafQQLm4IW5OoM8O+4tatME=" crossorigin="anonymous"></script>
     <script src = "/socket.io/socket.io.js"></script>
     <script src = "../js/cah.js"></script>
