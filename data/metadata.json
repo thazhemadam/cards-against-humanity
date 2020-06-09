@@ -1,0 +1,572 @@
+
+[
+ {
+        "www": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "World Wide Web Pack",
+            "icon": "globe"
+        }
+},
+{
+
+        
+        "matrimony": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[$] Cads About Matrimony",
+            "icon": "bell"
+        }
+},
+{
+        "greenbox": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Green Box Expansion",
+            "icon": "square"
+        }
+},
+{
+        "family": {
+            "description": "Cards Against Humanity: Family Edition is a new fill-in-the-blank comedy game that\u2019s just like Cards Against Humanity, but it\u2019s written for kids and adults to play together.",
+            "official": true,
+            "name": "Family Edition (BETA)",
+            "icon": "child"
+        }
+},
+{
+        "c-derps": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Derps Against Humanity",
+            "icon": "meh-o"
+        }
+},
+{
+        "CAHe2": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "The Second Expansion",
+            "icon": "2"
+        }
+},
+{
+        "CAHe3": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "The Third Expansion",
+            "icon": "3"
+        }
+},
+{
+        "CAHe1": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "The First Expansion",
+            "icon": "1"
+        }
+},
+{
+        "CAHe6": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "The Sixth Expansion",
+            "icon": "6"
+        }
+},
+{
+        "c-golby": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Golby Fan Club",
+            "icon": "file-text-o"
+        }
+},
+{
+        "CAHe5": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "The Fifth Expansion",
+            "icon": "5"
+        }
+},
+{
+        "c-homestuck": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Cards Against Homestuck",
+            "icon": "home"
+        }
+},
+{
+        "fantasy": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Fantasy Pack",
+            "icon": "magic"
+        }
+},
+{
+        "c-prtg": {
+            "description": "A free marketing deck from Paessler labeled 'The Game Against Downtime: A card game for IT lovers', each card is branded with 'PRTG Network Monitor'.",
+            "official": false,
+            "name": "[C] PRTG",
+            "icon": "cloudscale"
+        }
+},
+{
+        "trumpvote": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Vote for Trump Pack",
+            "icon": "bullhorn"
+        }
+},
+{
+        "PAXE2013": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "PAX East 2013",
+            "icon": "arrow-circle-right"
+        }
+},
+{
+        "HACK": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Hackers Against Humanity",
+            "icon": "laptop"
+        }
+},
+{
+        "c-neindy": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] NEIndy",
+            "icon": "question"
+        }
+},
+{
+        "c-guywglasses": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] That Guy With The Glasses",
+            "icon": "street-view"
+        }
+},
+{
+        "c-gamegrumps": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Game Grumps",
+            "icon": "frown-o"
+        }
+},
+{
+        "trumpbag": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Trump Survival Pack",
+            "icon": "medkit"
+        }
+},
+{
+        "CAHgrognards": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Grognards Against Humanity (RPG fandom pack)",
+            "icon": "moon-o"
+        }
+},
+{
+        "c-doctorwho": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Doctor Who",
+            "icon": "stethoscope"
+        }
+},
+{
+        "c-mrman": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Mr. Man Collection",
+            "icon": "male"
+        }
+},
+{
+        "Canadian": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Canadian",
+            "icon": "leaf"
+        }
+},
+{
+        "c-equinity": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Cards Against Equinity",
+            "icon": "trophy"
+        }
+},
+{
+        "BaseUK": {
+            "description": "The UK edition of the base game",
+            "official": true,
+            "name": "Base Set (UK Edition)",
+            "icon": ""
+        }
+},
+{
+        "c-xkcd": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] xkcd",
+            "icon": "close"
+        }
+},
+{
+        "Base": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Base Set",
+            "icon": ""
+        }
+},
+{
+        "HOCAH": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "House of Cards Against Humanity",
+            "icon": "university"
+        }
+},
+{
+        "misprint": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Misprint Replacement Bonus Cards",
+            "icon": "print"
+        }
+},
+{
+        "reject": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Reject Pack",
+            "icon": "thumbs-down"
+        }
+},
+{
+        "c-stupid": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Ridiculously Stupid",
+            "icon": "lemon-o"
+        }
+},
+{
+        "c-socialgamer": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] SocialGamer",
+            "icon": "gamepad"
+        }
+},
+{
+        "c-antisocial": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Antisocial Injustice",
+            "icon": "gavel"
+        }
+},
+{
+        "c-nobilis": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Nobilis Reed",
+            "icon": "exclamation"
+        }
+},
+{
+        "Box": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Box Expansion",
+            "icon": "cube"
+        }
+},
+{
+        "NSFH": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Not Safe For Humanity",
+            "icon": "exclamation-triangle"
+        }
+},
+{
+        "c-admin": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Admin's Picks",
+            "icon": "thumbs-o-up"
+        }
+},
+{
+        "90s": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "90s Nostalgia Pack",
+            "icon": "birthday-cake"
+        }
+},
+{
+        "food": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Food Pack",
+            "icon": "cutlery"
+        }
+},
+{
+        "PAX2015": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "PAX Prime 2015 Food Packs",
+            "icon": "truck"
+        }
+},
+{
+        "c-rt": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Rooster Teeth",
+            "icon": "youtube"
+        }
+},
+{
+        "c-tg": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] /tg/",
+            "icon": "reddit"
+        }
+},
+{
+        "c-sodomydog": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Sodomy Dog's Furry Pack",
+            "icon": "paw"
+        }
+},
+{
+        "hillary": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Vote for Hillary Pack",
+            "icon": "venus"
+        }
+},
+{
+        "c-khaos": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Khaos WolfKat",
+            "icon": "ils"
+        }
+},
+{
+        "CAHe4": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "The Fourth Expansion",
+            "icon": "4"
+        }
+},
+{
+        "c-northernlion": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Northernlion",
+            "icon": "youtube-play"
+        }
+},
+{
+        "c-vidya": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Vidya",
+            "icon": "video-camera"
+        }
+},
+{
+        "GOT": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Game of Thrones (no spoilers)",
+            "icon": "shield"
+        }
+},
+{
+        "c-ragingpsyfag": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] RagingPsyfag's Pack of Shenanigans",
+            "icon": "fighter-jet"
+        }
+},
+{
+        "Image1": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Joey Image 1",
+            "icon": "picture-o"
+        }
+},
+{
+        "crabs": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[$] Crabs Adjust Humidity",
+            "icon": "wrench"
+        }
+},
+{
+        "c-vewysewious": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Very Serious",
+            "icon": "black-tie"
+        }
+},
+{
+        "reject2": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Reject Pack 2",
+            "icon": "ban"
+        }
+},
+{
+        "PAXE2014": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "PAX East 2014",
+            "icon": "arrow-circle-o-right"
+        }
+},
+{
+        "c-ladies": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Ladies Against Humanity",
+            "icon": "female"
+        }
+},
+{
+        "science": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Science Pack",
+            "icon": "flask"
+        }
+},
+{
+        "PAXPP2014": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "PAX Prime 2014 Panel Pack",
+            "icon": "user-times"
+        }
+},
+{
+        "Period": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "Period Pack",
+            "icon": "tint"
+        }
+},
+{
+        "c-fim": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] FiMFiction.net",
+            "icon": "heart"
+        }
+},
+{
+        "c-anime": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Anime",
+            "icon": "sun-o"
+        }
+},
+{
+        "apples": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[$] Apples to Apples&reg; Party Pack",
+            "icon": "apple"
+        }
+},
+{
+        "c-imgur": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Imgur",
+            "icon": "info"
+        }
+},
+{
+        "PAXEP2014": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "PAX East 2014 Panel Pack",
+            "icon": "users"
+        }
+},
+{
+        "xmas2012": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "2012 Holiday Pack",
+            "icon": "tree"
+        }
+},
+{
+        "xmas2013": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "2013 Holiday Pack",
+            "icon": "gift"
+        }
+},
+{
+        "PAXP2013": {
+            "description": "- placeholder -",
+            "official": true,
+            "name": "PAX Prime 2013",
+            "icon": "paypal"
+        }
+},
+{
+        "c-rpanons": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] RPAnons",
+            "icon": "user-secret"
+        }
+},
+{
+        "c-eurovision": {
+            "description": "- placeholder -",
+            "official": false,
+            "name": "[C] Eurovision Song Contest",
+            "icon": "music"
+        }
+    }]

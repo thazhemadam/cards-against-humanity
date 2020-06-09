@@ -20,11 +20,11 @@
 
     <div id="login">
         <span>Let's Get This Party Started</span> 
-        <form action="./room.html" style="margin-top: 2em;" id="join">
+        <form id="join-room" action="./room.html" style="margin-top: 2em;">
             <label for="name" class="formLabel">Name</label><br/>
             <input type="text" name="name" placeholder="Name" class="formInput" required autocomplete="off"/><br/>
             <label for="roomid" class="formLabel secondItem">Room ID</label><br/><br/>
-            <input type="text" name="roomid" placeholder="Room Id" class="formInput secondItem" required autocomplete="off" /><br/><br/><br/>
+            <input type="text" name="id" id="join-room-id" placeholder="Room Id" class="formInput secondItem" required autocomplete="off" /><br/><br/><br/>
             <input type="submit" value="Join" class="btn-primary"/> 
         </form>
     </div>

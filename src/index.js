@@ -9,40 +9,75 @@ let users=[];
 
 io.on('connection', (socket)=>{
 
-    socket.on('create',({name, roomid}, callback)=>{
+    // console.log('WebSocket connection.')
+    socket.on('create',({name, id}, callback)=>{
 
         
-        let index=users.findIndex(user=>user.roomid===roomid);
-        if(index!==-1){return callback(`Room ${roomid} already exists`);}
+        let index=users.findIndex(user=>user.id===id);
+        if(index!==-1){return callback(`Room ${id} already exists`);}
         if(name.trim().length===0){return callback("User's name can't be blank");}
-        if(roomid.trim().length===0){return callback("Invalid Room ID");}
+        if(id.toString().trim().length===0){return callback("Invalid Room ID");}
         
         let user={
             id: socket.id,
             name: name,
-            roomid: roomid
+            roomname: id,
+            participants: [name]
         };
         
         users.push(user);
         
-        socket.join(user.roomid);
-        console.log(`${user.name} with ${socket.id} created the room ${user.roomid}: ${users}`);
+        socket.join(user.roomname);
+        console.log(`${user.name} with ${socket.id} created the room ${user.roomname}: ${user['participants']}`);
         callback();
     });
+
+    socket.on('login', ({name, id}, callback)=>{
+
+        let index=users.findIndex(user=>user.roomname===id);
+        if(index===-1){return callback(`Room ${id} doesn't exists`);}
+        if(name.trim().length===0){return callback("User's name can't be blank");}
+        if(id.toString().trim().length===0){return callback("Invalid Room ID");}
+        if(users[index].participants.length===7){return callback("Maximum number of users in the room");}
+        
+        let user={
+            id: socket.id,
+            name: name,
+            roomname: id
+        };
+
+        users[index].participants.push(user);
+        socket.join(user.roomname);
+        console.log(`Welcome ${user.name} to ${user.roomname}. The room now has ${users[index].participants.length} users`);
+        callback();
+
+    });
+
+    socket.on('invalid', ({}, callback)=>callback());
 
     socket.on('disconnect', ()=>{
         const index=users.findIndex(user=>user.id===socket.id);
         if(index!==-1){
             console.log(`${users[index].name} Left the room`);
+            io.to(users[index].roomname).emit('broadcast', {});
             users.splice(index, 1);
+        }else{
+            users.forEach(user=>{
+                const memIndex=user.participants.findIndex(member=>member.id===socket.id);
+                if(memIndex!==-1){
+                    console.log(`${user.participants[memIndex].name} left the channel`);
+                    user.participants.splice(memIndex, 1);
+                    console.log(`The room now has ${user.participants.length} user(s)`);
+                }
+            });
         }
     });
 });
 
 
-const port = process.env.PORT||20000;
+const port = process.env.PORT ||20000;
 
 
 server.listen(port, ()=>{
-    console.log('hello world'+port);
+    console.log('Server up and running on port '+port);
 })
