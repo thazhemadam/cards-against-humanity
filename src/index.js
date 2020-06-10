@@ -9,7 +9,7 @@ let users=[];
 
 io.on('connection', (socket)=>{
 
-    // console.log('WebSocket connection.')
+    console.log('WebSocket connection.');
     socket.on('create',({name, id}, callback)=>{
 
         

@@ -1,21 +1,82 @@
 <html>
     <head>
         <link rel="icon" href="/assets/cah-icon.png" type="image/png" />
+        <link rel="stylesheet" href="../css/cah.css">
         <title>
             CAH Room
         </title>
         <h1>CAH Room</h1>
     </head>
     <body>
+        
         <br>
         Play CAH with your friends from this page!
-        <div id = 'room-details'>
-            <button id='copy-link'>Copy Link</button>
+
+        <div class="grid-container">
+            <!-- div for room details and gamestats/leaderboard -->
+            <div id='detailsandstats' class="grid-item">
+                <!-- Room Details -->
+                <div id = "sidebarTemplateArea" class = "chat__sidebar">
+                    <div id = 'room-details'>
+                        <button id='copy-link'>Copy Link</button>
+                    </div>               
+                </div>
+                
+            </div>
+
+            <!-- div for cards display, and gameplay -->
+            <div class="grid-item">
+                <!-- Cards -->
+            </div>
+
+            <!-- div for chat section. -->
+            <div class="grid-item">
+                <!-- Chat -->
+                <div id='chat-section' class="chat">
+                    <div class = "chat__main">        
+                        <div id = 'messageTemplateArea' class = "chat__messages"></div>
+
+                        <div class="compose">        
+                            <form id = 'message-form'>
+                                <input name='message' placeholder="Message" type="text" required autocomplete="off">
+                                <button>Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <input id='chat-toggle' type="button" value='Close Chat'></button>
+            </div>
         </div>
     </body>
+    
+    <script id= 'sidebar-template' type = "text/html">
+        <h2 class = "room-title">{{roomName}}</h2>
+        <h3 class = "list-title"> Users Online </h3>
+
+        <ul class = "users">
+            {{#usersInRoom}}
+                <li> {{username}} </li>
+            {{/usersInRoom}}
+        </ul>
+    </script>
+
+    <script id = 'message-template' type = "text/html">
+        <div class="message">
+            <p>
+                <span class = "message__name">{{User}} </span>
+                <span class = "message__meta">{{messageTime}}</span>
+            </p>
+
+            <p>
+                {{messageDisplay}}
+            </p>
+        </div>
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha256-ijqLssetA1NMNjZ+w1zaUafQQLm4IW5OoM8O+4tatME=" crossorigin="anonymous"></script>
     <script src = "/socket.io/socket.io.js"></script>
     <script src = "../js/cah.js"></script>
-</body>
 </html>
