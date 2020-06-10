@@ -12,7 +12,7 @@ const sessions = require('../../data/activeSessions')
 const host = new express.Router();
 
 const createID = (name) => {
-    return jwt.sign({name},process.env.JWT_SECRET_KEY);
+    return jwt.sign({name}, process.env.JWT_SECRET_KEY);
 }
 
 host.get('/host', async (req, res) => {
