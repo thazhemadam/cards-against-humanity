@@ -1,5 +1,5 @@
 const express = require('express');
-const sessions = require('../../data/activeSessions')
+const {sessions} = require('../utils/sessions')
 
 const join = new express.Router();
 
@@ -8,7 +8,7 @@ const checkAuthenticationStatus = (UUID) => {
 }
 
 join.get('/join', async (req,res)=>{
-    console.log('GET request for /join received.\nProceeding to verify if you are worthy to enter the room.');
+    // console.log('GET request for /join received.\nProceeding to verify if you are worthy to enter the room.');
     const UUID = req.query.id;
     if(!UUID){
         return res.send({error:'Please specify your Room ID, and we will see if we can connect you.'});
@@ -16,9 +16,9 @@ join.get('/join', async (req,res)=>{
     }
     const _status = checkAuthenticationStatus(UUID);
     if(!_status){
-        return res.send({error: 'Macha room illai'})
+        return res.send({error: "Requested room doesn't exist"})
     }
-    res.send({name: sessions.get(UUID)});
+    res.send({roomName: sessions.get(UUID)});
 })
 
 module.exports = join;

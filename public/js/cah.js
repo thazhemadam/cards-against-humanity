@@ -1,4 +1,5 @@
-const {name, id}=Qs.parse(location.search, {ignoreQueryPrefix: true});
+const socket = io();
+const {room, id}=Qs.parse(location.search, {ignoreQueryPrefix: true});
 console.log(Qs.parse(location.search, {ignoreQueryPrefix: true}));
 
 //Copy the room id to clipboard when the "Copy Link" button is clicked.
@@ -23,12 +24,21 @@ $(document).ready(() => {
   
   });
 
+const $messageForm = document.getElementById('message-form')
+const $messageFormInput = $messageForm.querySelector('input')
+const $messageFormButton = $messageForm.querySelector('button')
+const $messagesTemplateArea = document.getElementById('messageTemplateArea')
+const $sidebarTemplateArea = document.getElementById('sidebarTemplateArea')
 
-const socket = io();
+//Templates
+const messageTemplate = document.getElementById('message-template').innerHTML
+const sidebarTemplate = document.getElementById('sidebar-template').innerHTML
+
+
 console.log(document.referrer);
 
 if(document.referrer==="http://localhost:20000/html/host.html"){
-    socket.emit('create', {name, id}, (err)=>{
+    socket.emit('create', {room, id}, (err)=>{
         if(err){
             alert(err);
             window.location.href="/";
@@ -37,7 +47,7 @@ if(document.referrer==="http://localhost:20000/html/host.html"){
 }
 
 else if(document.referrer==="http://localhost:20000/html/join.html"){
-    socket.emit('login', {name, id}, (err)=>{
+    socket.emit('login', {room, id}, (err)=>{
         if(err){
             alert(err);
             window.location.href="/html/join.html";
@@ -53,7 +63,7 @@ else{
 
 socket.on('broadcast', ({})=>window.location.href="/");
 
-socket.emit('create', {name, roomid}, (err)=>{
+socket.emit('create', {room, roomid}, (err)=>{
     if(err){
         alert(err);
         window.location.href="/";

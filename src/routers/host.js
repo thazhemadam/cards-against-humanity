@@ -7,7 +7,7 @@ const express = require('express');
 const jwt  = require('jsonwebtoken')
 
 
-const sessions = require('../../data/activeSessions')
+const {sessions} = require('../utils/sessions')
 
 const host = new express.Router();
 
@@ -16,7 +16,7 @@ const createID = (name) => {
 }
 
 host.get('/host', async (req, res) => {
-    console.log('GET request for /host received.\nProceeding to generate cool, unique room id to be returned as response.');
+    // console.log('GET request for /host received.\nProceeding to generate cool, unique room id to be returned as response.');
     
     const roomName = req.query.roomname
     if(!roomName){
@@ -24,7 +24,7 @@ host.get('/host', async (req, res) => {
     }
     const _id = createID(req.query.roomname);
     sessions.set(_id, roomName);
-    console.log(sessions);
+    // console.log(sessions);
     res.send({_id});
 })
 

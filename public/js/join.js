@@ -5,7 +5,7 @@ const $joinRoomForm = document.getElementById('join-room');
 const roomJoinStatus = async (_id) => {
     const url = '/join'+(_id?'?id='+_id:'')
     return await fetch(url).then(async (response) =>{
-        return await response.json().then((data)=> (data.error?false:data.name));
+        return await response.json().then((data)=> (data.error?false:data.roomName));
     });
 }
 
@@ -13,10 +13,11 @@ const roomJoinStatus = async (_id) => {
 $joinRoomForm.addEventListener("submit", async (e)=>{
     e.preventDefault();
     const $_id = document.getElementById('join-room-id').value.trim();
+    const $name = document.getElementById('join-room-name').value.trim();
     const result = await roomJoinStatus($_id);
     if(!result){
         return alert("Sorry. Something went wrong.")
     }
-    location.replace("/html/room.html?name="+result+"&id="+$_id)
+    location.replace("/html/room.html?user="+$name+"&room="+result+"&id="+$_id)
 })
 
