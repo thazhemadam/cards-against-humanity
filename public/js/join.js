@@ -18,6 +18,7 @@ $joinRoomForm.addEventListener("submit", async (e)=>{
     if(!result){
         return alert("Sorry. Something went wrong.")
     }
-    location.replace("/html/room.html?name="+result+"&id="+$_id)
+    sessionStorage.setItem('id',$_id);
+    location.replace("/html/room.html?name="+$name+"&room="+result)
 })
 
