@@ -13,20 +13,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 </head>
 
-<body style="display: flex; background-image: url('../assets/hostBackground.jpg');"></body>
+<body style="display: flex; background-image: url('../assets/hostBackground.jpg');" class="container-fluid">
     
-    <div class="title" style="color: white;">
+    <div class="title" style="color: white;" class="col col sm-6">
         <p>Are you sure you have friends?</p>
     </div>
 
-    <div id="login">
+    <div id="login" class="col col-sm-6">
         <span>Be A Good Host</span> 
         <form id = 'host-room' style="margin-top: 2em;">
             <label for="name" class="formLabel">Name</label><br/>
             <input type="text" id="host-name" name="name" placeholder="Name" class="formInput" required autocomplete="off" /><br/>
             <label for="roomid" class="formLabel secondItem">Room Name</label><br/><br/>
             <input id="room-name" type="text" name="id" placeholder="Room Name" class="formInput secondItem" required autocomplete="off"/><br/><br/><br/>
-            <input type="submit" value="Join" class="btn-primary"/> 
+            <input type="submit" value="Join" class="primary"/> 
         </form>
     </div>
     <script src = "../js/host.js"></script>

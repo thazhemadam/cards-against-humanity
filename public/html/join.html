@@ -11,8 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 </head>
-<body style="display: flex; background-image: url(../assets/loginBackground.jpg); ">
+<body style="display: flex; background-image: url(../assets/loginBackground.jpg);" class="container-fluid">
 
     <div class="title" style="color: white;">
         <p>Do you have friends to play with?</p>
@@ -20,14 +22,17 @@
 
     <div id="login">
         <span>Let's Get This Party Started</span> 
-        <form id="join-room" action="./room.html" style="margin-top: 2em;">
+        <form id="join-room" action="./room.html" style="margin-top: 1rem;">
             <label for="name" class="formLabel">Name</label><br/>
             <input type="text" id="join-room-name" name="name" placeholder="Name" class="formInput" required autocomplete="off"/><br/>
-            <label for="roomid" class="formLabel secondItem">Room ID</label><br/><br/>
-            <input type="text" name="id" id="join-room-id" placeholder="Room Id" class="formInput secondItem" required autocomplete="off" /><br/><br/><br/>
-            <input type="submit" value="Join" class="btn-primary"/> 
+            <label for="roomid" class="formLabel secondItem">Room ID</label><br/>
+            <input type="text" name="id" id="join-room-id" placeholder="Room Id" class="formInput secondItem" required autocomplete="off" /><br/><br/>
+            <input type="submit" value="Join" class="primary"/>
         </form>
     </div>
     <script src = "../js/join.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>

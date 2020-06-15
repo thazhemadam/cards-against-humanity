@@ -5,23 +5,22 @@
 }
 
 #login{
-    width: 20%;
-    height: 56vh;
+    width: 18rem;
+    height: 23rem;
     background-color: white;
     border-radius: 4px;
-    padding: 2em 2em;
+    padding: 1rem 2rem;
     box-shadow: -1.5px 1.5px 5px rgb(235, 228, 228), 1.5px -1.5px 5px rgb(235, 228, 228);
-    margin-top: 8em;
+    margin-top: 8%;
     margin-left: 10%;
 }
 
 .title{
     font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
     margin-left: 10%;
-    margin-top: 8em;
+    margin-top: 3em;
     width: 50%;
     height: 40em;
-    font-size: 1em;
 }
 
 .welcomeTitle p{
@@ -50,23 +49,24 @@
 }
 
 span{
-    font-size: 25px;
+    font-size: 1.4rem;
     font-weight: bold;
     text-align: center;
     font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
 }
 
 .formLabel{
-    font-size: 24px;
+    font-size: 1.2rem;
     font-family: 'HelveticaNeueW02-75Bold', 'Kalam', cursive;
 }
 
 .formInput{
     height: 3em;
     width: 92%;
-    font-size: 16px;
+    font-size: 0.85rem;
     padding-left: 1em;
     font-family: 'HelveticaNeueW02-75Bold', 'Roboto', sans-serif;
+    border: 1px solid rgb(104, 104, 104);
 }
 
 .secondItem{
@@ -78,19 +78,19 @@ span{
     color: rgb(104, 104, 104);
 }
 
-.btn-primary{
+.primary{
     width: 92%;
-    height: 2.6em;
+    height: 2.6rem;
     background-color: white;
     outline: none;
     border: 2px solid black;
-    font-size: 21px;
+    font-size: 1.4rem;
     font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
     letter-spacing: 3px;
     transition: 0.25s all ease;
 }
 
-.btn-primary:hover{
+.primary:hover{
     background-color: black;
     outline: none;
     color: white;
@@ -98,7 +98,7 @@ span{
 }
 
 .title p{
-    font-size: 110px;
+    font-size: 7vw;
     font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
 }
 
