@@ -1,6 +1,6 @@
 const socket = io();
 const {name, room}=Qs.parse(location.search, {ignoreQueryPrefix: true});
-console.log(Qs.parse(location.search, {ignoreQueryPrefix: true}));
+console.log((Qs.parse(location.search, {ignoreQueryPrefix: true})));
 
 
 //Copy the room id to clipboard when the "Copy Link" button is clicked.
@@ -35,18 +35,51 @@ const $sidebarTemplateArea = document.getElementById('sidebarTemplateArea')
 const messageTemplate = document.getElementById('message-template').innerHTML
 const sidebarTemplate = document.getElementById('sidebar-template').innerHTML
 
+const autoscroll = () => {
+    //New message element
+    const $newMessage = $messagesTemplateArea.lastElementChild
+
+    //Height of new message
+    const newMessageStyles = getComputedStyle($newMessage)
+    const newMessageMargin = parseInt(newMessageStyles.marginBottom)
+    const newMessageHeight = $newMessage.offsetHeight + newMessageMargin
+
+    //Visible Height
+    const visibleHeight = $messagesTemplateArea.offsetHeight
+
+    //Height of messages container
+    const containerHeight = $messagesTemplateArea.scrollHeight
+
+    //How far have you scrolled?
+    const scrollOffset = $messagesTemplateArea.scrollTop + visibleHeight
+
+    if(containerHeight - newMessageHeight<=scrollOffset){
+        $messagesTemplateArea.scrollTop = $messagesTemplateArea.scrollHeight
+    }
+}
+
+
 $messageForm.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    const message = $messageFormInput.value;
-    socket.emit('sendMessage', message, _id, (error)=>{
+
+    e.preventDefault()
+     
+    $messageFormButton.setAttribute('disabled','disabled')
+
+    const message = e.target.elements.message.value
+    if(message === ''){
+        $messageFormButton.removeAttribute('disabled')
+        return console.log('Please enter a message.')
+    }
+
+    socket.emit('sendMessage', message, (error)=>{
+    
         $messageFormButton.removeAttribute('disabled')
         $messageFormInput.value = ''
         $messageFormInput.focus()
         if(error){
-            return console.log(error)
+            console.log(error)
         }
-
-    });
+    })
 })
 
 socket.emit('join',{name, room:_id}, (error)=>{
@@ -57,3 +90,32 @@ socket.emit('join',{name, room:_id}, (error)=>{
     console.log('Client joined to socket server.')
 })
 
+socket.on('roomData',({roomName, usersInRoom})=>{
+    const html = Mustache.render(sidebarTemplate, {
+        roomName,
+        usersInRoom
+    })
+    $sidebarTemplateArea.innerHTML = html
+
+})
+
+
+socket.on('message',(message, sender)=>{
+    const html = Mustache.render(messageTemplate,{
+                                                    chat_message: true,
+                                                    User: sender,
+                                                    messageTime: moment(message.createdAt).format('h:mm a'),
+                                                    messageDisplay:message.content
+                                                })
+    $messagesTemplateArea.insertAdjacentHTML('beforeend',html)
+    autoscroll()
+}) 
+
+socket.on('toast',(toast)=>{
+    const html = Mustache.render(messageTemplate,{
+                                                    chat_toast: true,
+                                                    toastDisplay: toast
+                                                })
+    $messagesTemplateArea.insertAdjacentHTML('beforeend',html)
+    // autoscroll()
+}) 
