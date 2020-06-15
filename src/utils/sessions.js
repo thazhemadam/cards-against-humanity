@@ -20,6 +20,7 @@ const removeUser = (id) => {
     if(removeIndex!==-1){
         return usersActive.splice(removeIndex, 1)[0]
     }
+    return undefined
 }
 
 //Find an active user by id.

@@ -117,5 +117,5 @@ socket.on('toast',(toast)=>{
                                                     toastDisplay: toast
                                                 })
     $messagesTemplateArea.insertAdjacentHTML('beforeend',html)
-    // autoscroll()
+    autoscroll()
 }) 
