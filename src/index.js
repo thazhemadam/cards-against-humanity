@@ -53,7 +53,7 @@ io.on('connection',(socket)=>{
         }        
         io.to(room).emit('message',generateMessage(message),username)
         callback()
-    })
+    });
 })
 
 
