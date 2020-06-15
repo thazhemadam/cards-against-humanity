@@ -2,88 +2,60 @@ const app = require('./app');
 const http = require('http');
 const socketio = require('socket.io');
 
+const { sessions, addUser, removeUser, getUser, getUsersInRoom } = require('./utils/sessions');
+const {generateMessage} = require('./utils/messages');
+const { text } = require('express');
+
+
+
 const server = http.createServer(app);
 const io = socketio(server);
 
 io.on('connection',(socket)=>{
     console.log('New WebSocket Connection.')
-    socket.emit('message','Welcome.')
-    socket.broadcast.emit('message','A new user has joined.');
+    // socket.emit('message','Welcome.')
+    // socket.broadcast.emit('message','A new user has joined.');
 
-    socket.on('sendMessage', (message, _id, callback)=>{
+
+    socket.on('join',({name, room}, callback)=>{
         
+        //Since addUser returns an "error", and "user" object respectively.
+        if(!sessions.has(room)){
+            return callback('Shoo. Scat. No shortcuts. Either join a room the right way, or make your own.')
+        }
+        
+        const {error, newUser} = addUser({ id: socket.id, username:name, room, points: 0 })
+        if(error){
+            return callback(error)
+        }
+    
+        // console.log('Successfully logged ' + newUser.name + ' into '+sessions.get(newUser.room)+' - '+ newUser.room +'.')
+        socket.join(newUser.room)
+    
+        socket.emit('toast', 'Welcome to the room.')
+        socket.broadcast.to(newUser.room).emit('toast', `${newUser.username} has joined the party!`)
 
+        // console.log('This is get users in room '+JSON.stringify(getUsersInRoom(newUser.room), null, 4))
+        io.to(newUser.room).emit('roomData',{
+                // test: 'Console.log' 
+                roomName: sessions.get(newUser.room),
+                usersInRoom: getUsersInRoom(newUser.room) 
+        })
+    
+        callback()  //Represents no error in logging in
+    })
+
+    socket.on('sendMessage', (message, callback)=> {
+
+        const {error, username, room} = getUser(socket.id)
+        if(error){
+            callback(error)
+        }        
+        io.to(room).emit('message',generateMessage(message),username)
+        callback()
     })
 })
 
-// let users=[];
-
-// io.on('connection', (socket)=>{
-
-//     console.log('WebSocket connection.');
-//     socket.on('create',({name, id}, callback)=>{
-
-        
-//         let index=users.findIndex(user=>user.id===id);
-//         if(index!==-1){return callback(`Room ${id} already exists`);}
-//         if(name.trim().length===0){return callback("User's name can't be blank");}
-//         if(id.toString().trim().length===0){return callback("Invalid Room ID");}
-        
-//         let user={
-//             id: socket.id,
-//             name: name,
-//             roomname: id,
-//             participants: [name]
-//         };
-        
-//         users.push(user);
-        
-//         socket.join(user.roomname);
-//         console.log(`${user.name} with ${socket.id} created the room ${user.roomname}: ${user['participants']}`);
-//         callback();
-//     });
-
-//     socket.on('login', ({name, id}, callback)=>{
-
-//         let index=users.findIndex(user=>user.roomname===id);
-//         if(index===-1){return callback(`Room ${id} doesn't exists`);}
-//         if(name.trim().length===0){return callback("User's name can't be blank");}
-//         if(id.toString().trim().length===0){return callback("Invalid Room ID");}
-//         if(users[index].participants.length===7){return callback("Maximum number of users in the room");}
-        
-//         let user={
-//             id: socket.id,
-//             name: name,
-//             roomname: id
-//         };
-
-//         users[index].participants.push(user);
-//         socket.join(user.roomname);
-//         console.log(`Welcome ${user.name} to ${user.roomname}. The room now has ${users[index].participants.length} users`);
-//         callback();
-
-//     });
-
-//     socket.on('invalid', ({}, callback)=>callback());
-
-//     socket.on('disconnect', ()=>{
-//         const index=users.findIndex(user=>user.id===socket.id);
-//         if(index!==-1){
-//             console.log(`${users[index].name} Left the room`);
-//             io.to(users[index].roomname).emit('broadcast', {});
-//             users.splice(index, 1);
-//         }else{
-//             users.forEach(user=>{
-//                 const memIndex=user.participants.findIndex(member=>member.id===socket.id);
-//                 if(memIndex!==-1){
-//                     console.log(`${user.participants[memIndex].name} left the channel`);
-//                     user.participants.splice(memIndex, 1);
-//                     console.log(`The room now has ${user.participants.length} user(s)`);
-//                 }
-//             });
-//         }
-//     });
-// });
 
 
 const port = process.env.PORT ||20000;

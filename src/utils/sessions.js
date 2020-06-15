@@ -4,19 +4,13 @@ let sessions = new Map();
 let usersActive = []
 //Created to handle users.
 
-const addUser = ({id, username, room}) => {
+const addUser = ({id, username, room, points}) => {
     //Clean how the data looks.
-    
-    //Validate Data
-    if(!username || !room){
-        return {
-            error: 'Username and Room are required.'
-        }
-    }
 
     //Store user.
-    const newUser = {id, username, room}
+    const newUser = {id, username, room, points}
     usersActive.push(newUser)
+    // console.log('Users active is :'+JSON.stringify(usersActive, null, 4))
     return {newUser}
 }
 
@@ -32,7 +26,9 @@ const removeUser = (id) => {
 const getUser = (id) => {
     const user = usersActive.find((eachActiveUser)=> eachActiveUser.id === id)
     if(user === undefined)
-        return {username: undefined, room:undefined}
+        return {
+                error: 'User does not exist.'
+            }
     return user
 }
 

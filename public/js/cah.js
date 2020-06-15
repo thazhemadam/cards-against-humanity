@@ -1,6 +1,7 @@
 const socket = io();
-const {name, id}=Qs.parse(location.search, {ignoreQueryPrefix: true});
-console.log(Qs.parse(location.search, {ignoreQueryPrefix: true}));
+const {name, room}=Qs.parse(location.search, {ignoreQueryPrefix: true});
+console.log((Qs.parse(location.search, {ignoreQueryPrefix: true})));
+
 
 //Copy the room id to clipboard when the "Copy Link" button is clicked.
 const $copylink = document.getElementById('copy-link');
@@ -34,59 +35,87 @@ const $sidebarTemplateArea = document.getElementById('sidebarTemplateArea')
 const messageTemplate = document.getElementById('message-template').innerHTML
 const sidebarTemplate = document.getElementById('sidebar-template').innerHTML
 
+const autoscroll = () => {
+    //New message element
+    const $newMessage = $messagesTemplateArea.lastElementChild
+
+    //Height of new message
+    const newMessageStyles = getComputedStyle($newMessage)
+    const newMessageMargin = parseInt(newMessageStyles.marginBottom)
+    const newMessageHeight = $newMessage.offsetHeight + newMessageMargin
+
+    //Visible Height
+    const visibleHeight = $messagesTemplateArea.offsetHeight
+
+    //Height of messages container
+    const containerHeight = $messagesTemplateArea.scrollHeight
+
+    //How far have you scrolled?
+    const scrollOffset = $messagesTemplateArea.scrollTop + visibleHeight
+
+    if(containerHeight - newMessageHeight<=scrollOffset){
+        $messagesTemplateArea.scrollTop = $messagesTemplateArea.scrollHeight
+    }
+}
+
+
 $messageForm.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    const message = $messageFormInput.value;
-    socket.emit('sendMessage', message, _id, (error)=>{
+
+    e.preventDefault()
+     
+    $messageFormButton.setAttribute('disabled','disabled')
+
+    const message = e.target.elements.message.value
+    if(message === ''){
+        $messageFormButton.removeAttribute('disabled')
+        return console.log('Please enter a message.')
+    }
+
+    socket.emit('sendMessage', message, (error)=>{
+    
         $messageFormButton.removeAttribute('disabled')
         $messageFormInput.value = ''
         $messageFormInput.focus()
         if(error){
-            return console.log(error)
+            console.log(error)
         }
-
-    });
+    })
 })
 
-// const roomName = 'room'
-// const usersInRoom = [
-//                         {username:'1'},{username:'2'},{username:'3'},{username:'Anant'},{username:'Ashtray'}]
-// const html = Mustache.render(sidebarTemplate, {
-//     roomName,
-//     usersInRoom
-// })
-// $sidebarTemplateArea.innerHTML = html
-
-
-socket.on('message',(message)=>{
-    console.log(message);
+socket.emit('join',{name, room:_id}, (error)=>{
+    if(error){
+        alert(error)
+        location.href = '/'
+    }
+    console.log('Client joined to socket server.')
 })
 
-// console.log(document.referrer);
+socket.on('roomData',({roomName, usersInRoom})=>{
+    const html = Mustache.render(sidebarTemplate, {
+        roomName,
+        usersInRoom
+    })
+    $sidebarTemplateArea.innerHTML = html
 
-// if(document.referrer===`http://${window.location.host}/html/host.html`){
-//     socket.emit('create', {name, id}, (err)=>{
-//         if(err){
-//             alert(err);
-//             window.location.href="/";
-//         }
-//     });
-// }
+})
 
-// else if(document.referrer===`http://${window.location.host}/html/join.html`){
-//     socket.emit('login', {name, id}, (err)=>{
-//         if(err){
-//             alert(err);
-//             window.location.href="/html/join.html";
-//         }
-//     });
-// }
 
-// else{
-//     socket.emit('invalid', {}, ()=>{
-//         alert(window.location.host);
-//         window.location.href="/";
-//     });
-// }
+socket.on('message',(message, sender)=>{
+    const html = Mustache.render(messageTemplate,{
+                                                    chat_message: true,
+                                                    User: sender,
+                                                    messageTime: moment(message.createdAt).format('h:mm a'),
+                                                    messageDisplay:message.content
+                                                })
+    $messagesTemplateArea.insertAdjacentHTML('beforeend',html)
+    autoscroll()
+}) 
 
-// socket.on('broadcast', ({})=>window.location.href="/");
+socket.on('toast',(toast)=>{
+    const html = Mustache.render(messageTemplate,{
+                                                    chat_toast: true,
+                                                    toastDisplay: toast
+                                                })
+    $messagesTemplateArea.insertAdjacentHTML('beforeend',html)
+    // autoscroll()
+}) 

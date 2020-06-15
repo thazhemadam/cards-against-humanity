@@ -59,22 +59,30 @@
 
         <ul class = "users">
             {{#usersInRoom}}
-                <li> {{username}} </li>
+                <li> {{username}} : {{points}} </li>
             {{/usersInRoom}}
         </ul>
     </script>
 
     <script id = 'message-template' type = "text/html">
         <div class="message">
-            <p>
-                <span class = "message__name">{{User}} </span>
-                <span class = "message__meta">{{messageTime}}</span>
-            </p>
+            {{#chat_message}}
+                <p>
+                    <span class = "message__name">{{User}} </span>
+                    <span class = "message__meta">{{messageTime}}</span>
+                </p>
+            
+                <p>
+                    {{messageDisplay}}
+                </p>
+            {{/chat_message}}
 
-            <p>
-                {{messageDisplay}}
-            </p>
-        </div>
+            {{#chat_toast}}
+    
+                <p><span class = "message__toast">{{toastDisplay}} </span></p>
+    
+            {{/chat_toast}}
+        </div>    
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
