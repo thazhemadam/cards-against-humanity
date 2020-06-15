@@ -48,6 +48,15 @@ $messageForm.addEventListener('submit',(e)=>{
     });
 })
 
+// const roomName = 'room'
+// const usersInRoom = [
+//                         {username:'1'},{username:'2'},{username:'3'},{username:'Anant'},{username:'Ashtray'}]
+// const html = Mustache.render(sidebarTemplate, {
+//     roomName,
+//     usersInRoom
+// })
+// $sidebarTemplateArea.innerHTML = html
+
 
 socket.on('message',(message)=>{
     console.log(message);

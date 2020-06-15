@@ -14,12 +14,14 @@
 
         <div class="grid-container">
             <!-- div for room details and gamestats/leaderboard -->
+            
             <div id='detailsandstats' class="grid-item">
                 <!-- Room Details -->
+                <div id = 'room-details'>
+                    <button id='copy-link'>Copy Link</button>
+                </div>               
                 <div id = "sidebarTemplateArea" class = "chat__sidebar">
-                    <div id = 'room-details'>
-                        <button id='copy-link'>Copy Link</button>
-                    </div>               
+                    
                 </div>
                 
             </div>
@@ -50,8 +52,10 @@
     </body>
     
     <script id= 'sidebar-template' type = "text/html">
+              
         <h2 class = "room-title">{{roomName}}</h2>
-        <h3 class = "list-title"> Users Online </h3>
+        
+        <h3 class = "list-title"> Users In Room </h3>
 
         <ul class = "users">
             {{#usersInRoom}}
