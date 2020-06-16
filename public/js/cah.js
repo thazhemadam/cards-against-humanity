@@ -19,6 +19,7 @@ $(document).ready(() => {
     $(document).ready(function(){
         $("#chat-toggle").click(function(){
             const show = $(this).val() === 'Close Chat';
+            document.getElementById('chat-toggle').innerHTML=show?"<i class='fas fa-times'></i>":"<i class='fas fa-bars'></i>";
             $(this).val(show ? 'Open Chat' : 'Close Chat');
             $("#chat-section").toggle();
         });
@@ -29,11 +30,9 @@ const $messageForm = document.getElementById('message-form')
 const $messageFormInput = $messageForm.querySelector('input')
 const $messageFormButton = $messageForm.querySelector('button')
 const $messagesTemplateArea = document.getElementById('messageTemplateArea')
-const $sidebarTemplateArea = document.getElementById('sidebarTemplateArea')
 
 //Templates
 const messageTemplate = document.getElementById('message-template').innerHTML
-const sidebarTemplate = document.getElementById('sidebar-template').innerHTML
 
 const autoscroll = () => {
     //New message element
@@ -91,12 +90,13 @@ socket.emit('join',{name, room:_id}, (error)=>{
 })
 
 socket.on('roomData',({roomName, usersInRoom})=>{
-    const html = Mustache.render(sidebarTemplate, {
+    const html = Mustache.render(document.getElementById('sidebar-template').innerHTML, {
         roomName,
         usersInRoom
     })
-    $sidebarTemplateArea.innerHTML = html
-
+    document.getElementById('detailsandstats').innerHTML = html
+    document.getElementById('roomName').textContent=roomName;
+    
 })
 
 
@@ -117,5 +117,5 @@ socket.on('toast',(toast)=>{
                                                     toastDisplay: toast
                                                 })
     $messagesTemplateArea.insertAdjacentHTML('beforeend',html)
-    // autoscroll()
+    autoscroll()
 }) 

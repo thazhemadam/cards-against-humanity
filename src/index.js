@@ -53,7 +53,21 @@ io.on('connection',(socket)=>{
         }        
         io.to(room).emit('message',generateMessage(message),username)
         callback()
-    });
+    })
+
+    socket.on('disconnect', () => {
+        const removedUser = removeUser(socket.id)
+
+        // console.log('removed user: '+removedUser.username)
+        if(removedUser){
+            console.log('removed.')
+            io.to(removedUser.room).emit('toast',`${removedUser.username} has left the server.`)
+            io.to(removedUser.room).emit('roomData', {
+                roomName: sessions.get(removedUser.room),
+                usersInRoom: getUsersInRoom(removedUser.room)
+            })  
+        }
+    })
 })
 
 
