@@ -6,6 +6,7 @@ console.log((Qs.parse(location.search, {ignoreQueryPrefix: true})));
 //Copy the room id to clipboard when the "Copy Link" button is clicked.
 const $copylink = document.getElementById('copy-link');
 const _id = sessionStorage.getItem('id');
+const $logout = document.getElementById('logout');
 $copylink.addEventListener("click", (e) => {
     let $temp = $("<input>");
     $("#room-details").append($temp);
@@ -13,6 +14,11 @@ $copylink.addEventListener("click", (e) => {
     document.execCommand("copy");
     $temp.remove();
 });
+
+$logout.addEventListener("click", (e)=> {
+    sessionStorage.removeItem('id');
+    window.location.href='/';
+})
 
 //Minimizing and maximizing the whole chat-section when Open/Close Chat button is clicked.
 $(document).ready(() => {
