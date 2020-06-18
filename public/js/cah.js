@@ -18,18 +18,6 @@ $copylink.addEventListener("click", (e) => {
 $logout.addEventListener("click", (e)=> {
     sessionStorage.removeItem('id');
     window.location.href='/';
-})
-
-//Minimizing and maximizing the whole chat-section when Open/Close Chat button is clicked.
-$(document).ready(() => {
-    $(document).ready(function(){
-        $("#chat-toggle").click(function(){
-            const show = $(this).val() === 'Close Chat';
-            document.getElementById('chat-toggle').innerHTML=show?"<i class='fas fa-times'></i>":"<i class='fas fa-bars'></i>";
-            $(this).val(show ? 'Open Chat' : 'Close Chat');
-            $("#chat-section").toggle();
-        });
-    }); 
 });
 
 const $messageForm = document.getElementById('message-form')
@@ -63,6 +51,18 @@ const autoscroll = () => {
     }
 }
 
+let toggler=[...document.getElementById('toggle').querySelectorAll('div')];
+toggler.forEach(item=>{
+    item.addEventListener('click', ()=>{
+        if(item.textContent===toggler[0].textContent){
+            document.getElementById('chat-section').style.zIndex='1';
+            document.getElementById('detailsandstats').style.zIndex='5';
+        }else if(item.textContent===toggler[1].textContent){
+            document.getElementById('chat-section').style.zIndex='5';
+            document.getElementById('detailsandstats').style.zIndex='1';
+        }
+    });
+});
 
 $messageForm.addEventListener('submit',(e)=>{
 

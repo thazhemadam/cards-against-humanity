@@ -142,7 +142,7 @@ nav ul{
 }
 
 nav ul li{
-    font-size: 1.25rem;
+    font-size: 1.25vw;
     width: 7rem;
     height: 11vh;
     text-align: center;
@@ -161,17 +161,20 @@ nav ul li{
 }
 
 #detailsandstats{
-    position: relative;
+    position: absolute;
+    top: 19vh;
+    right: 0;
     width: 20vw;
     height: 89vh;
-    border-right: 1px solid black;
+    border-left: 1px solid black;
     overflow-y: scroll;
+    background-color: white;
 }
 
 #roomName{
     position: relative;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.5vw;
     left: 45%;
     top: 35%;
 }
@@ -191,14 +194,15 @@ nav ul li{
 
 #messageTemplateArea{
     overflow-y: scroll;
-    height: 82vh;
+    height: 74vh;
     max-width: 20vw;
 }
 
 #chat-section{
     z-index: 5;
     position: absolute;
-    left: 0;
+    top: 19vh;
+    right: 0;
     max-width: 20vw;
 }
 
@@ -212,7 +216,7 @@ nav ul li{
 }
 
 #message-form button{
-    width: 18%;
+    width: 15%;
     height: 7.4vh;
     position: relative;
     right: 1.2%;
@@ -231,6 +235,7 @@ nav ul li{
     padding: 0vw 0.234vw;
     margin-left: 0.234vw;
     margin-bottom: 0.524rem;
+    position: relative;
 }
 
 .message span{
@@ -253,6 +258,7 @@ nav ul li{
     height: 4vh;
     text-align: center;
     margin-top: 0.523vw;
+    margin-bottom: 0.782vw;
     color: rgb(49, 45, 45);
 }
 
@@ -267,28 +273,35 @@ nav ul li{
 #player{
     width: 18%;
     position: absolute;
-    left: 20vw;
+    left: 0;
     height: 89vh;
-    border-right: 1px solid black;
 }
 
 #questionCardContainer{
     border-bottom: 1px solid black;
-    height: 35vh;
+    height: 54vh;
+    width: 20vw;
+    border-right: 1px solid black;
 }
 
 #answerCardsContainer{
-    height: 54vh;
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 35vh;
+    width: 80vw;
     border-bottom: 1px solid black;
-    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 #submissions{
-    border-right: 1px solid black;
-    width: calc(82% - 20.2vw);
-    height: 89vh;
+    border-bottom: 1px solid black;
+    width: 60vw;
+    height: 54vh;
     position: absolute;
-    left: calc(20vw + 18%);
+    left: 20vw;
     display: flex; 
     flex-wrap: wrap; 
     justify-content: space-around;
@@ -306,4 +319,35 @@ nav ul li{
     font-size: 1.12vw;
     border: 1px solid black;
     margin-bottom: 5%;
+}
+
+.roundInfo{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 8vh;
+    font-size: 1.242vw;
+}
+
+#toggle{
+    display: flex;
+    position: absolute;
+    justify-content: space-evenly;
+    z-index: 10;
+    right: 0;
+    top: 11vh;
+}
+
+#toggle div{
+    border-bottom: 1px solid black;
+    width: 10vw;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    cursor: pointer;
 }

@@ -11,7 +11,6 @@
     <body>
         
         <nav>
-            <span id="chat-toggle" style="cursor: pointer;"><i class='fas fa-times'></i></span>
             <span id="roomName"></span>
             <ul id="room-details">
                 <li id="copy-link">Room ID</li>
@@ -20,18 +19,17 @@
         </nav>
 
         <div class="grid-container">
-            <!-- div for room details and gamestats/leaderboard -->
-            
-            <div id='detailsandstats' class="grid-item"></div>
 
             <!-- div for cards display, and gameplay -->
             <div class="grid-item" style="display: flex;">
                 <!-- Cards -->
                 <div id="player">
                     <div id="questionCardContainer">
+                        <div class="roundInfo" id="timer" style="background-color: gainsboro;">Time Left: 0:60</div>
                         <div class="card" style="background-color: black; color: white; left: 13%;">
                             Hitler did nothing wrong
                         </div>
+                        <div class="roundInfo" id="cardCzar" style="margin-top: 15%;">Card Czar Hitler Senpai</div>
                     </div>
                     <div id="answerCardsContainer">
                         <div class="card" style="background-color: white; color: black; left: 13%;">
@@ -82,10 +80,17 @@
                     </div>
                 </div>
             </div>
-
+            
+            <!-- div for room details and gamestats/leaderboard -->
+            <div id="toggle">
+                <div style="border-right: 1px solid black;">Users</div>
+                <div>Chat</div>
+            </div>
+            <div id='detailsandstats' class="grid-item"></div>
+            
             <div class = "chat__main" id='chat-section' >        
                 <div id = 'messageTemplateArea' class = "chat__messages" style="background-color: white;"></div>
-
+                
                 <form id = 'message-form' style="width: 19.8vw; position: relative; bottom: 0.53em; margin-top: 0.43rem;">
                     <input name='message' placeholder="Message" type="text" required autocomplete="off">
                     <button><i class="fas fa-paper-plane fa-lg"></i></button>
@@ -95,12 +100,7 @@
     </body>
     
     <script id= 'sidebar-template' type = "text/html">
-
-        <div class="members">
-            <div>Users</div>    
-            <div>Points</div>    
-        </div>
-
+        
         {{#usersInRoom}}
             <div class="members">
                 <div>{{username}}</div>
