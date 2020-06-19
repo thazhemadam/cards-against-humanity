@@ -1,3 +1,4 @@
 config/dev.env
 node_modules/
 .vscode/
+Changes.md

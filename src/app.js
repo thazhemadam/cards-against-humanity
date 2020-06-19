@@ -4,11 +4,14 @@ if (process.env.NODE_ENV !== 'production') require("dotenv").config({
 });
 
 const express = require('express');
+const hostRouter = require('./routers/host')
+const joinRouter = require('./routers/join')
 
 const app = express();
-
 const publicDirectoryPath = path.resolve(__dirname, '../public');
 
 app.use(express.static(publicDirectoryPath));
-
+app.use(hostRouter);
+app.use(joinRouter);
+  
 module.exports = app;

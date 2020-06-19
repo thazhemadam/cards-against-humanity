@@ -1,15 +1,139 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>
-            CAH Room
-        </title>
-        <h1>CAH Room</h1>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/assets/cah-icon.png" type="image/png" />
+        <link rel="stylesheet" href="../css/cah.css">
+        <link rel="stylesheet" href="../css/styles.css">
+        <title>CAH Room</title>
     </head>
     <body>
-        <br>
-        Play CAH with your friends from this page!
-        <button id='CAH'>Room Join</button>
+        
+        <nav>
+            <span id="roomName"></span>
+            <ul id="room-details">
+                <li id="copy-link">Room ID</li>
+                <li id="logout">Logout</li>
+            </ul>
+        </nav>
+
+        <div class="grid-container">
+
+            <!-- div for cards display, and gameplay -->
+            <div class="grid-item" style="display: flex;">
+                <!-- Cards -->
+                <div id="player">
+                    <div id="questionCardContainer">
+                        <div class="roundInfo" id="timer" style="background-color: gainsboro;">Time Left: 0:60</div>
+                        <div class="card" style="background-color: black; color: white; left: 13%;">
+                            Hitler did nothing wrong
+                        </div>
+                        <div class="roundInfo" id="cardCzar" style="margin-top: 15%;">Card Czar Hitler Senpai</div>
+                    </div>
+                    <div id="answerCardsContainer">
+                        <div class="card" style="background-color: white; color: black; left: 13%;">
+                            Hitler did nothing wrong
+                        </div>
+                        <div class="card" style="background-color: white; color: black; left: 13%;">
+                            Hitler did nothing wrong
+                        </div>
+                        
+                    </div>
+                </div>
+                <div id="submissions">
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                    <div class="card" style="background-color: white; color: black;">
+                        Hitler did nothing wrong
+                    </div>
+                </div>
+            </div>
+            
+            <!-- div for room details and gamestats/leaderboard -->
+            <div id="toggle">
+                <div style="border-right: 1px solid black;">Users</div>
+                <div>Chat</div>
+            </div>
+            <div id='detailsandstats' class="grid-item"></div>
+            
+            <div class = "chat__main" id='chat-section' >        
+                <div id = 'messageTemplateArea' class = "chat__messages" style="background-color: white;"></div>
+                
+                <form id = 'message-form' style="width: 19.8vw; position: relative; bottom: 0.53em; margin-top: 0.43rem;">
+                    <input name='message' placeholder="Message" type="text" required autocomplete="off">
+                    <button><i class="fas fa-paper-plane fa-lg"></i></button>
+                </form>
+            </div>
+        </div>
     </body>
+    
+    <script id= 'sidebar-template' type = "text/html">
+        
+        {{#usersInRoom}}
+            <div class="members">
+                <div>{{username}}</div>
+                <div>{{points}}</div>
+            </div>
+        {{/usersInRoom}}
+
+    </script>
+
+    <script id = 'message-template' type = "text/html">
+        {{#chat_message}}
+            <div class="message">
+                <p>
+                    <span class = "message__name">{{User}}</span>
+                    <span class = "message__meta">{{messageTime}}</span>
+                </p>
+            
+                <p class="messageContent">{{messageDisplay}}</p>
+            </div>    
+        {{/chat_message}}
+
+        {{#chat_toast}}
+            <div class="toast">
+                <p><span class = "message__toast">{{toastDisplay}}</span></p>
+            </div>
+        {{/chat_toast}}
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha256-ijqLssetA1NMNjZ+w1zaUafQQLm4IW5OoM8O+4tatME=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/21641d8459.js" crossorigin="anonymous"></script>
     <script src = "/socket.io/socket.io.js"></script>
-    <script src = "/js/cah.js"></script>
+    <script src = "../js/cah.js"></script>
 </html>

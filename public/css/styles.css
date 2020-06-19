@@ -1,110 +1,353 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+
+body{
+    overflow: hidden;
+}
+
 #login{
-    width: 20%;
-    height: 55vh;
+    position: absolute;
+    right: 9%;
+    width: 15%;
+    height: auto;
     background-color: white;
     border-radius: 4px;
-    padding: 2em 2em;
-    line-height: 3.23em;
+    padding: 1rem 2rem;
     box-shadow: -1.5px 1.5px 5px rgb(235, 228, 228), 1.5px -1.5px 5px rgb(235, 228, 228);
-    margin-top: 8em;
-    margin-left: 10%;
+    margin-top: 6%;
 }
 
 .title{
-    width: 50%;
-    height: 45%;
-    font-size: 1em;
-    margin-top: 4em;
-    margin-left: 5em;
-    padding-left: 3em;
-    line-height: 6.5em;
-}
-
-.welcomeTitle{
-    margin-left: 36%;
-    margin-top: 10%;
-    line-height: 4em;
-}
-
-.welcomeTitle p{
-    
     font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
-    padding: 0;
-    line-height: 0;
-    font-size: 7rem;
-    color:white;
+    position: absolute;
+    left: 9%;
+    margin-top: 3%;
+    width: 50%;
+    height: 100vh;
+}
+
+.title p{
+    font-size: 7vw;
+    font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
+}
+
+#welcomeTitle a{
+    position: relative;
+    margin-bottom: 2%;
+    top: 2%;
+    left: 7%;
+    width: 20vw;
+    height: 6vw;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#welcomeTitle{
+    font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
+    position: absolute;
+    left: 39%;
+    top: 8%;
+    width: 50%;
+    height: 100vh;
+}
+
+#welcomeTitle p{
+    font-size: 7vw;
+    font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
 }
 
 span{
-    font-size: 25px;
+    font-size: 1.4rem;
     font-weight: bold;
     text-align: center;
-    font-family: 'HelveticaNeueW02-75Bold',   'Oswald', sans-serif;
+    font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
 }
 
 .formLabel{
-    font-size: 24px;
-    font-family: 'HelveticaNeueW02-75Bold',   'Kalam', cursive;
+    font-size: 1.2rem;
+    font-family: 'HelveticaNeueW02-75Bold', 'Kalam', cursive;
 }
 
 .formInput{
-    height: 3em;
-    width: 85%;
-    font-size: 16px;
+    height: 6vh;
+    width: 87%;
+    font-size: 0.85rem;
     padding-left: 1em;
-    font-family: 'HelveticaNeueW02-75Bold',   'Roboto', sans-serif;
+    font-family: 'HelveticaNeueW02-75Bold', 'Roboto', sans-serif;
+    border: 1px solid rgb(104, 104, 104);
 }
 
 .secondItem{
     position: relative;
-    top: 1.12em;
+    top: 1.12vw;
 }
 
 .formInput::placeholder{
     color: rgb(104, 104, 104);
 }
 
-.btn-primary{
+.primary{
     width: 92%;
-    height: 2.6em;
+    height: 5vh;
     background-color: white;
     outline: none;
     border: 2px solid black;
-    font-size: 21px;
-    font-family: 'HelveticaNeueW02-75Bold',   'Oswald', sans-serif;
-    letter-spacing: 3px;
+    font-size: 1.4rem;
+    font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
+    letter-spacing: 0.532vw;
     transition: 0.25s all ease;
 }
 
-.btn-primary:hover{
+.primary:hover{
     background-color: black;
     outline: none;
     color: white;
     cursor: pointer;
 }
 
-.title p{
-    font-size: 110px;
-    font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
-}
-
 .btn-secondary{
-    width: 55%;
-    height: 4.6em;
     background-color: black;
     color: white;
     outline: none;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 4px;
     text-decoration: none;
-    font-family: 'HelveticaNeueW02-75Bold',   'Oswald', sans-serif;
+    font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
     color: white;
-    font-size: 21px;
-    padding: 12px 20%;
+    font-size: 2.234vw;
     transition: 0.25s all ease;
 }
 
 .btn-secondary:hover{
     color: black;
     background: white;
+}
+
+nav{
+    width: 100%;
+    height: 11vh;
+    background-color: black;
+    color: white;
+}
+
+nav ul{
+    display: flex;
+    float: right;
+    list-style: none;
+}
+
+nav ul li{
+    font-size: 1.25vw;
+    width: 7rem;
+    height: 11vh;
+    text-align: center;
+    border-right: 1px outset rgb(170, 170, 170);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#chat-toggle{
+    position: relative;
+    top: 35%;
+    left: 2rem;
+}
+
+#detailsandstats{
+    position: absolute;
+    top: 19vh;
+    right: 0;
+    width: 20vw;
+    height: 89vh;
+    border-left: 1px solid black;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+#roomName{
+    position: relative;
+    color: white;
+    font-size: 1.5vw;
+    left: 45%;
+    top: 35%;
+}
+
+.members{
+    border-bottom: 1px solid black;
+    display: flex;
+    font-size: 1.14rem;
+}
+
+.members div{
+    position: relative;
+    width: 50%;
+    text-align: center;
+    padding: 1vw 0vw;
+}
+
+#messageTemplateArea{
+    overflow-y: scroll;
+    height: 74vh;
+    max-width: 20vw;
+}
+
+#chat-section{
+    z-index: 5;
+    position: absolute;
+    top: 19vh;
+    right: 0;
+    max-width: 20vw;
+}
+
+#message-form input{
+    height: 7vh;
+    width: 75%;
+    font-size: 0.934rem;
+    padding-left: 0.24rem;
+    margin: 0;
+    border: 1.5px solid black;
+}
+
+#message-form button{
+    width: 15%;
+    height: 7.4vh;
+    position: relative;
+    right: 1.2%;
+    background-color: #00C6FF;
+    color: white;
+    border: none;
+}
+
+.message{
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px black;
+    border-radius: 0px 4px 4px 4px;
+    max-width: 75%;
+    width: fit-content;
+    line-height: 1.125rem;
+    padding: 0vw 0.234vw;
+    margin-left: 0.234vw;
+    margin-bottom: 0.524rem;
+    position: relative;
+}
+
+.message span{
+    font-size: 0.647rem;
+    font-weight: bold;
+    margin-right: 0.234rem;
+}
+
+.message__meta{
+    float: right;
+}
+
+.messageContent{
+    font-size: 0.847rem;
+    padding-bottom: 0.234vw;
+}
+
+.toast{
+    width: 100%;
+    height: 4vh;
+    text-align: center;
+    margin-top: 0.523vw;
+    margin-bottom: 0.782vw;
+    color: rgb(49, 45, 45);
+}
+
+.message__toast{
+    font-size: 0.643rem;
+    border: 1px solid black;
+    padding: 0.2345vw;
+    background-color: #0991FF;
+    border-radius: 4px;
+}
+
+#player{
+    width: 18%;
+    position: absolute;
+    left: 0;
+    height: 89vh;
+}
+
+#questionCardContainer{
+    border-bottom: 1px solid black;
+    height: 54vh;
+    width: 20vw;
+    border-right: 1px solid black;
+}
+
+#answerCardsContainer{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 35vh;
+    width: 80vw;
+    border-bottom: 1px solid black;
+    overflow-x: scroll;
+}
+
+#submissions{
+    border-bottom: 1px solid black;
+    width: 60vw;
+    height: 54vh;
+    position: absolute;
+    left: 20vw;
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-around;
+    overflow-y: scroll;
+}
+
+.card{
+    position: relative;
+    top: 9.5%;
+    left: 0.35vw;
+    max-width: 10vw;
+    height: 25vh;
+    padding: 1.2324vw 1.2341vw 0vw 1.2341vw;
+    border-radius: 16px;
+    font-size: 1.12vw;
+    border: 1px solid black;
+    margin-bottom: 5%;
+}
+
+.roundInfo{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 8vh;
+    font-size: 1.242vw;
+}
+
+#toggle{
+    display: flex;
+    position: absolute;
+    justify-content: space-evenly;
+    z-index: 10;
+    right: 0;
+    top: 11vh;
+}
+
+#toggle div{
+    border-bottom: 1px solid black;
+    width: 10vw;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    cursor: pointer;
 }
