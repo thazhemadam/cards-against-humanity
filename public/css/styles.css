@@ -293,6 +293,7 @@ nav ul li{
     height: 54vh;
     width: 20vw;
     border-right: 1px solid black;
+    overflow: scroll;
 }
 
 #answerCardsContainer{
@@ -328,7 +329,8 @@ nav ul li{
     left: 0.35vw;
     max-width: 10vw;
     min-width: 10vw;
-    height: 25vh;
+    height: fit-content;
+    min-height: 25vh;
     padding: 1.2324vw 1.2341vw 0vw 1.2341vw;
     border-radius: 16px;
     border: 1px solid black;
