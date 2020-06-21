@@ -4,6 +4,17 @@
     box-sizing: content-box;
 }
 
+@font-face {
+    font-family: "Helvetica Neue W02 75 Bold";
+    src: url("../fonts/0c96daa6c25910a00efd1f0ea3c5c02d.eot"); /* IE9*/
+    src: url("../fonts/0c96daa6c25910a00efd1f0ea3c5c02d.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/0c96daa6c25910a00efd1f0ea3c5c02d.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/0c96daa6c25910a00efd1f0ea3c5c02d.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/0c96daa6c25910a00efd1f0ea3c5c02d.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/0c96daa6c25910a00efd1f0ea3c5c02d.svg#Helvetica Neue W02 75 Bold") format("svg"); /* iOS 4.1- */
+  }
+  
+
 body{
     overflow: hidden;
 }
@@ -21,7 +32,7 @@ body{
 }
 
 .title{
-    font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
+    font-family: 'Helvetica Neue W02 75 Bold', 'Bangers', cursive;
     position: absolute;
     left: 9%;
     margin-top: 3%;
@@ -31,7 +42,7 @@ body{
 
 .title p{
     font-size: 7vw;
-    font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
+    font-family: 'Helvetica Neue W02 75 Bold', 'Bangers', cursive;
 }
 
 #welcomeTitle a{
@@ -48,7 +59,7 @@ body{
 }
 
 #welcomeTitle{
-    font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
+    font-family: 'Helvetica Neue W02 75 Bold', 'Bangers', cursive;
     position: absolute;
     left: 39%;
     top: 8%;
@@ -58,19 +69,19 @@ body{
 
 #welcomeTitle p{
     font-size: 7vw;
-    font-family: 'HelveticaNeueW02-75Bold', 'Bangers', cursive;
+    font-family: 'Helvetica Neue W02 75 Bold', 'Bangers', cursive;
 }
 
 span{
     font-size: 1.4rem;
     font-weight: bold;
     text-align: center;
-    font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
+    font-family: 'Helvetica Neue W02 75 Bold', 'Oswald', sans-serif;
 }
 
 .formLabel{
     font-size: 1.2rem;
-    font-family: 'HelveticaNeueW02-75Bold', 'Kalam', cursive;
+    font-family: 'Helvetica Neue W02 75 Bold', 'Kalam', cursive;
 }
 
 .formInput{
@@ -78,7 +89,7 @@ span{
     width: 87%;
     font-size: 0.85rem;
     padding-left: 1em;
-    font-family: 'HelveticaNeueW02-75Bold', 'Roboto', sans-serif;
+    font-family: 'Helvetica Neue W02 75 Bold', 'Roboto', sans-serif;
     border: 1px solid rgb(104, 104, 104);
 }
 
@@ -98,7 +109,7 @@ span{
     outline: none;
     border: 2px solid black;
     font-size: 1.4rem;
-    font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
+    font-family: 'Helvetica Neue W02 75 Bold', 'Oswald', sans-serif;
     letter-spacing: 0.532vw;
     transition: 0.25s all ease;
 }
@@ -117,7 +128,7 @@ span{
     border: 2px solid white;
     border-radius: 4px;
     text-decoration: none;
-    font-family: 'HelveticaNeueW02-75Bold', 'Oswald', sans-serif;
+    font-family: 'Helvetica Neue W02 75 Bold', 'Oswald', sans-serif;
     color: white;
     font-size: 2.234vw;
     transition: 0.25s all ease;
@@ -309,6 +320,9 @@ nav ul li{
 }
 
 .card{
+    font-family:'Helvetica Neue W02 75 Bold';
+    font-size: 1vw;
+    font-style:normal;
     position: relative;
     top: 9.5%;
     left: 0.35vw;
@@ -317,7 +331,6 @@ nav ul li{
     height: 25vh;
     padding: 1.2324vw 1.2341vw 0vw 1.2341vw;
     border-radius: 16px;
-    font-size: 1.12vw;
     border: 1px solid black;
     margin-bottom: 5%;
 }
