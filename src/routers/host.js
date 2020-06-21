@@ -12,8 +12,8 @@ const {sessions} = require('../utils/sessions')
 const host = new express.Router();
 
 const createID = (name) => {
-    // 
-    return jwt.sign({name}, process.env.JWT_SECRET_KEY);
+    // process.env.JWT_SECRET_KEY
+    return jwt.sign({name}, '2eXUrRIBlYSu-GqQxBobsC4KdsrCpMkNapIbPc7SXyNrMz1dpjH--_wIexfMODCj');
 }
 
 host.get('/host', async (req, res) => {
