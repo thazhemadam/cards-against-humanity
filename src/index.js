@@ -1,6 +1,7 @@
 const app = require('./app');
 const http = require('http');
 const socketio = require('socket.io');
+const fs=require('fs');
 
 const { sessions, addUser, removeUser, getUser, getUsersInRoom } = require('./utils/sessions');
 const {generateMessage} = require('./utils/messages');
@@ -10,6 +11,13 @@ const { text } = require('express');
 
 const server = http.createServer(app);
 const io = socketio(server);
+let question="";
+
+fs.readFile('data/black.json', (err, data)=>{
+    if (err) throw err;
+    let questionList=JSON.parse(data);
+    question=questionList[Math.floor(Math.random()*Math.floor(questionList.length-1))].text;
+});
 
 io.on('connection',(socket)=>{
     console.log('New WebSocket Connection.')
@@ -39,9 +47,21 @@ io.on('connection',(socket)=>{
         io.to(newUser.room).emit('roomData',{
                 // test: 'Console.log' 
                 roomName: sessions.get(newUser.room),
-                usersInRoom: getUsersInRoom(newUser.room) 
-        })
-    
+                usersInRoom: getUsersInRoom(newUser.room),
+                question: question 
+        });
+
+        fs.readFile('data/white.json', (err, data)=>{
+            let ansArr=[];
+            let answerList=JSON.parse(data);
+            for(let i=0; i<10; ++i){
+                let answer=answerList[Math.floor(Math.random()*Math.floor(answerList.length-1))].text;
+                let index=ansArr.findIndex(item=>item===answer);
+                if(index===-1){ansArr.push(answer);}
+            }
+            socket.emit('answerCards', {answers: ansArr});
+        });
+
         callback()  //Represents no error in logging in
     })
 

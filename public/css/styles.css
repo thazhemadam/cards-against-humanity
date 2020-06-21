@@ -286,8 +286,8 @@ nav ul li{
 
 #answerCardsContainer{
     display: flex;
-    justify-content: space-evenly;
     position: absolute;
+    justify-content: space-between;
     bottom: 0;
     left: 0;
     height: 35vh;
@@ -313,6 +313,7 @@ nav ul li{
     top: 9.5%;
     left: 0.35vw;
     max-width: 10vw;
+    min-width: 10vw;
     height: 25vh;
     padding: 1.2324vw 1.2341vw 0vw 1.2341vw;
     border-radius: 16px;

@@ -95,14 +95,14 @@ socket.emit('join',{name, room:_id}, (error)=>{
     console.log('Client joined to socket server.')
 })
 
-socket.on('roomData',({roomName, usersInRoom})=>{
+socket.on('roomData',({roomName, usersInRoom, question})=>{
     const html = Mustache.render(document.getElementById('sidebar-template').innerHTML, {
         roomName,
         usersInRoom
     })
     document.getElementById('detailsandstats').innerHTML = html
     document.getElementById('roomName').textContent=roomName;
-    
+    document.getElementById('question').textContent=question;
 })
 
 
@@ -125,3 +125,16 @@ socket.on('toast',(toast)=>{
     $messagesTemplateArea.insertAdjacentHTML('beforeend',html)
     autoscroll()
 }) 
+
+socket.on('answerCards', ({answers})=>{
+    console.log(answers);
+    answers.map(ans=>{
+        let div=document.createElement('div');
+        div.classList.add('card');
+        div.style.backgroundColor='white';
+        div.style.color='black';
+        div.style.marginLeft='6%';
+        div.textContent=ans;
+        document.getElementById('answerCardsContainer').appendChild(div);
+    });
+});

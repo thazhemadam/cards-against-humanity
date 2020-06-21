@@ -25,25 +25,21 @@
                 <!-- Cards -->
                 <div id="player">
                     <div id="questionCardContainer">
-                        <div class="roundInfo" id="timer" style="background-color: gainsboro;">Time Left: 0:60</div>
-                        <div class="card" style="background-color: black; color: white; left: 13%;">
-                            Hitler did nothing wrong
+                        <div class="roundInfo" id="timer" style="background-color: gainsboro;">
+                            Time Left: <span style="margin-left: 5%; font-size: 1.442vw;">60</span> seconds
                         </div>
-                        <div class="roundInfo" id="cardCzar" style="margin-top: 15%;">Card Czar Hitler Senpai</div>
+
+                        <div class="card" style="background-color: black; color: white; left: 13%;" id="question"></div>
+
+                        <div class="roundInfo" style="margin-top: 15%;">
+                            Card Czar: <span id="cardCzar" style="margin-left: 5%; font-size: 1.442vw;"></span>
+                        </div>
                     </div>
-                    <div id="answerCardsContainer">
-                        <div class="card" style="background-color: white; color: black; left: 13%;">
-                            Hitler did nothing wrong
-                        </div>
-                        <div class="card" style="background-color: white; color: black; left: 13%;">
-                            Hitler did nothing wrong
-                        </div>
-                        
-                    </div>
+                    <div id="answerCardsContainer"></div>
                 </div>
                 <div id="submissions">
                     <div class="card" style="background-color: white; color: black;">
-                        Hitler did nothing wrong
+                        Hitler did nothing 
                     </div>
                     <div class="card" style="background-color: white; color: black;">
                         Hitler did nothing wrong
@@ -83,7 +79,7 @@
             
             <!-- div for room details and gamestats/leaderboard -->
             <div id="toggle">
-                <div style="border-right: 1px solid black;">Users</div>
+                <div style="border-right: 1px solid black; border-left: 1px solid black;">Users</div>
                 <div>Chat</div>
             </div>
             <div id='detailsandstats' class="grid-item"></div>
