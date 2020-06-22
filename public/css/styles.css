@@ -336,6 +336,8 @@ nav ul li{
     padding: 1.2324vw 1.2341vw 0vw 1.2341vw;
     border-radius: 16px;
     border: 1px solid black;
+    background-color: white; 
+    color: black;
 }
 
 .cardContainer{
@@ -356,6 +358,13 @@ nav ul li{
     width: 100%;
     height: 8vh;
     font-size: 1.242vw;
+}
+
+.roundInfo button{
+    position: absolute; 
+    top: 7vh;
+    height: 4vh;
+    width: 8vw;
 }
 
 #toggle{
