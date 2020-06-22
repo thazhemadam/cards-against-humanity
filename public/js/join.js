@@ -12,13 +12,15 @@ const roomJoinStatus = async (_id) => {
 //When the join-room form is submitted, verify the authenticity and existence of the room. If found to be valid, navigate to the session's page.
 $joinRoomForm.addEventListener("submit", async (e)=>{
     e.preventDefault();
-    const $_id = document.getElementById('join-room-id').value.trim();
+    const $id = document.getElementById('join-room-id')
+    const _id = $id.value.trim();
     const $name = document.getElementById('join-room-name').value.trim();
-    const result = await roomJoinStatus($_id);
+    const result = await roomJoinStatus(_id);
     if(!result){
-        return alert("Sorry. Something went wrong.")
+        $id.value = ''
+        return alert("Oops. Looks like that didn't work. Try again with a valid room ID maybe?")
     }
-    sessionStorage.setItem('id',$_id);
+    sessionStorage.setItem('id',_id);
     location.replace("/html/room.html?name="+$name+"&room="+result)
 })
 

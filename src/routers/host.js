@@ -4,17 +4,13 @@ if (process.env.NODE_ENV !== 'production') require("dotenv").config({
 });
 
 const express = require('express');
-const jwt  = require('jsonwebtoken')
+const short = require('short-uuid')
 
 
 const {sessions} = require('../utils/sessions')
 
 const host = new express.Router();
 
-const createID = (name) => {
-    // 
-    return jwt.sign({name}, process.env.JWT_SECRET_KEY);
-}
 
 host.get('/host', async (req, res) => {
     // console.log('GET request for /host received.\nProceeding to generate cool, unique room id to be returned as response.');
@@ -23,8 +19,8 @@ host.get('/host', async (req, res) => {
     if(!roomName){
         return {error: 'Please enter room name.'}
     }
-    const _id = createID(req.query.roomname);
-    console.log(roomName + ' has been assigned the id '+_id);
+    const _id = short.generate();
+    console.log(`The room ${roomName}  has been assigned the id ${_id}`);
     sessions.set(_id, roomName);
     // console.log(sessions);
     res.send({_id});
