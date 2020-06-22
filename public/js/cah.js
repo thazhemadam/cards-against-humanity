@@ -130,11 +130,22 @@ socket.on('answerCards', ({answers})=>{
     console.log(answers);
     answers.map(ans=>{
         let div=document.createElement('div');
-        div.classList.add('card');
-        div.style.backgroundColor='white';
-        div.style.color='black';
-        div.style.marginLeft='6%';
-        div.textContent=ans;
+        div.classList.add('cardContainer');
+        let answerCard=document.createElement('div');
+        answerCard.classList.add('card');
+        answerCard.style.backgroundColor='white';
+        answerCard.style.color='black';
+        answerCard.textContent=ans;
+        div.appendChild(answerCard);
         document.getElementById('answerCardsContainer').appendChild(div);
+    });
+    
+    let answerCards=[...document.querySelectorAll('#answerCardsContainer .cardContainer')];
+
+    answerCards.map(answer=>{
+       answer.addEventListener('click', ()=>{
+            answerCards.map(ans=>ans.style.backgroundColor="white");
+            answer.style.backgroundColor="rgb(1, 103, 255)";
+       });
     });
 });

@@ -316,8 +316,12 @@ nav ul li{
     left: 20vw;
     display: flex; 
     flex-wrap: wrap; 
-    justify-content: space-around;
     overflow-y: scroll;
+}
+
+#submissions .cardContainer{
+    height: 30vh;
+    border-bottom: 1px solid black;
 }
 
 .card{
@@ -325,8 +329,6 @@ nav ul li{
     font-size: 1vw;
     font-style:normal;
     position: relative;
-    top: 9.5%;
-    left: 0.35vw;
     max-width: 10vw;
     min-width: 10vw;
     height: fit-content;
@@ -334,7 +336,15 @@ nav ul li{
     padding: 1.2324vw 1.2341vw 0vw 1.2341vw;
     border-radius: 16px;
     border: 1px solid black;
-    margin-bottom: 5%;
+}
+
+.cardContainer{
+    border-right: 1px solid black;
+    min-width: 19.55vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: ; */
 }
 
 .roundInfo{
