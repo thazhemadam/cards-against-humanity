@@ -3,6 +3,11 @@
 Cards Against Humanity is a witty game that can be enjoyed in the company of friends.
 This application serves as a rendition of the same.
 
+
+# Compiling CSS
+
+Run `npm run sass` to compile the .scss files into .css files.
+
 # Contribution Guidelines
 
 *   Ensure that ES6/ES7 and BEM syntax is strictly followed.

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "NODE_ENV=dev nodemon src/index.js -e html,js,css,env",
+    "sass":"sass --watch ./public/scss:./public/css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +26,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "sass": "^1.26.9",
     "short-uuid": "^3.1.1",
     "socket.io": "^2.3.0"
   }

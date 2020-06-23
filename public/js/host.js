@@ -19,5 +19,5 @@ $hostRoom.addEventListener('submit', async (e)=>{
     //if _id has been generated, the name, and room are detailed in the URL
     sessionStorage.setItem('id',_id)
     _id?location.replace("/html/room.html?name="+$name+"&room="+roomName):alert("Sorry. Looks like something went wrong. Try again later?");
-    alert(_id);
+    // alert(_id);
 });
