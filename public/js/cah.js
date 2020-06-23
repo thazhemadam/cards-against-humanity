@@ -126,8 +126,11 @@ socket.on('toast',(toast)=>{
     autoscroll()
 }) 
 
+let selectedCard="";
+
 socket.on('answerCards', ({answers})=>{
-    console.log(answers);
+    document.getElementById('answerCardsContainer').innerHTML='';
+
     answers.map(ans=>{
         let div=document.createElement('div');
         div.classList.add('cardContainer');
@@ -142,10 +145,25 @@ socket.on('answerCards', ({answers})=>{
     
     let answerCards=[...document.querySelectorAll('#answerCardsContainer .cardContainer')];
 
-    answerCards.map(answer=>{
-       answer.addEventListener('click', ()=>{
-            answerCards.map(ans=>ans.style.backgroundColor="white");
-            answer.style.backgroundColor="rgb(1, 103, 255)";
-       });
-    });
+    if(selectedCard===""){
+        answerCards.map(answer=>{
+           answer.addEventListener('click', ()=>{
+                answerCards.map(ans=>ans.style.backgroundColor="white");
+                answer.style.backgroundColor="rgb(1, 103, 255)";
+                selectedCard=answer.textContent;
+           });
+        });
+    }
+});
+
+document.querySelector('.roundInfo button').addEventListener('click', ()=>{
+    let answerCards=[...document.querySelectorAll('#answerCardsContainer .cardContainer')];
+    let answer=answerCards.find(ans=>ans.textContent===selectedCard);
+    if(answer!==undefined){
+        document.getElementById('answerCardsContainer').removeChild(answer);
+        answerCards=[...document.querySelectorAll('#answerCardsContainer .cardContainer')];
+        let answerTexts=answerCards.map(ans=>ans.textContent);
+        // selectedCard="";
+        socket.emit('newAnswerCard', {answerTexts});
+    }else{alert("Choose a card to answer the question");}
 });

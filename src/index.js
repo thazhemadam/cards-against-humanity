@@ -52,6 +52,7 @@ io.on('connection',(socket)=>{
         });
 
         fs.readFile('data/white.json', (err, data)=>{
+            if (err) throw err;
             let ansArr=[];
             let answerList=JSON.parse(data);
             for(let i=0; i<10; ++i){
@@ -64,6 +65,17 @@ io.on('connection',(socket)=>{
 
         callback()  //Represents no error in logging in
     })
+
+    socket.on('newAnswerCard', ({answerTexts})=>{
+        fs.readFile('data/white.json', (err, data)=>{
+            if (err) throw err;
+            let answerList=JSON.parse(data);
+            let answer=answerList[Math.floor(Math.random()*Math.floor(answerList.length-1))].text;
+            let index=answerTexts.findIndex(item=>item===answer);
+            if(index===-1){answerTexts.push(answer);}
+            socket.emit('answerCards', {answers: answerTexts});
+        });
+    });
 
     socket.on('sendMessage', (message, callback)=> {
 
