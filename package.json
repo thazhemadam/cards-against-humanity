@@ -7,7 +7,7 @@
     "start": "node src/index.js",
     "dev": "NODE_ENV=dev nodemon src/index.js -e html,js,css,env",
     "sass": "sass --watch ./public/scss:./public/css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/tazzzzzzz/cards-against-humanity#readme",
   "devDependencies": {
+    "jest": "^26.1.0",
     "nodemon": "^2.0.4"
   },
   "dependencies": {

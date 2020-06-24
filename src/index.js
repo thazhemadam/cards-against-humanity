@@ -5,7 +5,6 @@ const fs=require('fs');
 
 const { sessions, addUser, removeUser, getUser, getUsersInRoom } = require('./utils/sessions');
 const {generateMessage} = require('./utils/messages');
-const { text } = require('express');
 
 
 
@@ -13,17 +12,16 @@ const server = http.createServer(app);
 const io = socketio(server);
 let question="";
 
-fs.readFile('data/black.json', (err, data)=>{
+fs.readFileSync('data/black.json', (err, data)=>{
     if (err) throw err;
-    let questionList=JSON.parse(data);
+    let questionList=JSON.parse(data.toString());
     question=questionList[Math.floor(Math.random()*Math.floor(questionList.length-1))].text;
 });
 
 io.on('connection',(socket)=>{
     console.log('New WebSocket Connection.')
-    // socket.emit('message','Welcome.')
-    // socket.broadcast.emit('message','A new user has joined.');
-
+    socket.emit('message','Welcome.')
+    socket.broadcast.emit('message','A new user has joined.');
 
     socket.on('join',({name, room}, callback)=>{
         
@@ -44,6 +42,7 @@ io.on('connection',(socket)=>{
         socket.broadcast.to(newUser.room).emit('toast', `${newUser.username} has joined the party!`)
 
         // console.log('This is get users in room '+JSON.stringify(getUsersInRoom(newUser.room), null, 4))
+        //Send the room's details to the room into which the new user just joined.
         io.to(newUser.room).emit('roomData',{
                 // test: 'Console.log' 
                 roomName: sessions.get(newUser.room),
@@ -62,6 +61,11 @@ io.on('connection',(socket)=>{
             }
             socket.emit('answerCards', {answers: ansArr});
         });
+
+        // if(getUsersInRoom.length<3)
+        //     socket.emit('sendAlert','Please wait for more users to join.')
+
+        // socket.emit('Please wait for the room-host to begin the new round.');
 
         callback()  //Represents no error in logging in
     })
