@@ -63,17 +63,20 @@ io.on('connection',(socket)=>{
             socket.emit('answerCards', {answers: ansArr});
         });
 
-        callback()  //Represents no error in logging in
+        callback();  //Represents no error in logging in
     })
-
-    socket.on('newAnswerCard', ({answerTexts})=>{
+    
+    socket.on('newAnswerCard', ({answerTexts, answerCard, room})=>{
+        io.to(room).emit('submitAnswer', answerCard);
         fs.readFile('data/white.json', (err, data)=>{
             if (err) throw err;
             let answerList=JSON.parse(data);
             let answer=answerList[Math.floor(Math.random()*Math.floor(answerList.length-1))].text;
             let index=answerTexts.findIndex(item=>item===answer);
-            if(index===-1){answerTexts.push(answer);}
-            socket.emit('answerCards', {answers: answerTexts});
+            if(index===-1){
+                answerTexts.push(answer);
+                socket.emit('answerCards', {answers: answerTexts});
+            }
         });
     });
 

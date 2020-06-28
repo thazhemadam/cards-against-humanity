@@ -161,9 +161,22 @@ document.querySelector('.roundInfo button').addEventListener('click', ()=>{
     let answer=answerCards.find(ans=>ans.textContent===selectedCard);
     if(answer!==undefined){
         document.getElementById('answerCardsContainer').removeChild(answer);
+        let answerCard=answer.textContent;
         answerCards=[...document.querySelectorAll('#answerCardsContainer .cardContainer')];
         let answerTexts=answerCards.map(ans=>ans.textContent);
+        let roomName=document.getElementById('roomName').textContent;
         // selectedCard="";
-        socket.emit('newAnswerCard', {answerTexts});
+        socket.emit('newAnswerCard', {answerTexts, answerCard, room:_id});
+        // socket.emit('submitAnswer', {answer, roomName});
     }else{alert("Choose a card to answer the question");}
+});
+
+socket.on('submitAnswer', (answerCard)=>{
+    let div1=document.createElement('div');
+    div1.classList.add('cardContainer');
+    let div2=document.createElement('div');
+    div2.classList.add('card');
+    div2.innerHTML=`<img class="loading" src="../assets/loading.svg" alt="loading"><br/>Waiting for other players`;
+    div1.appendChild(div2);
+    document.getElementById('submissions').appendChild(div1);
 });

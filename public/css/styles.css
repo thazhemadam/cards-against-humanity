@@ -370,4 +370,10 @@ nav ul li {
   cursor: pointer;
 }
 
+.loading{
+  width: 4vw;
+  height: 4vw;
+  margin-left: 30%; 
+  margin-top: 19%;
+}
 /*# sourceMappingURL=styles.css.map */
