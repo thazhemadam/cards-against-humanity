@@ -21,9 +21,7 @@ const connection = (socket, io)=>{
         }
         
         const {error, newUser} = addUser({ id: socket.id, username:name, room, points: 0 })
-        if(error){
-            return callback(error)
-        }
+        if(error){return callback(error);}
     
         // console.log('Successfully logged ' + newUser.name + ' into '+sessions.get(newUser.room)+' - '+ newUser.room +'.')
         socket.join(newUser.room);
@@ -32,7 +30,7 @@ const connection = (socket, io)=>{
         socket.broadcast.to(newUser.room).emit('toast', `${newUser.username} has joined the party!`)
 
         if(getUsersInRoom(newUser.room).length<3){
-            return socket.emit('toast', `${3-getUsersInRoom(newUser.room).length} more "friends", and you can get this party started!`);
+            socket.emit('toast', `${3-getUsersInRoom(newUser.room).length} more "friends", and you can get this party started!`);
         }
         
         // console.log('This is get users in room '+JSON.stringify(getUsersInRoom(newUser.room), null, 4))

@@ -11,6 +11,7 @@
   src: url("../fonts/0c96daa6c25910a00efd1f0ea3c5c02d.eot?#iefix") format("embedded-opentype"), url("../fonts/0c96daa6c25910a00efd1f0ea3c5c02d.woff2") format("woff2"), url("../fonts/0c96daa6c25910a00efd1f0ea3c5c02d.woff") format("woff"), url("../fonts/0c96daa6c25910a00efd1f0ea3c5c02d.ttf") format("truetype"), url("../fonts/0c96daa6c25910a00efd1f0ea3c5c02d.svg#Helvetica Neue W02 75 Bold") format("svg");
   /* iOS 4.1- */
 }
+
 body {
   overflow: hidden;
 }
@@ -35,6 +36,7 @@ body {
   width: 50%;
   height: 100vh;
 }
+
 .title p {
   font-size: 7vw;
   font-family: "Helvetica Neue W02 75 Bold", "Bangers", cursive;
@@ -48,6 +50,7 @@ body {
   width: 50%;
   height: 100vh;
 }
+
 #welcomeTitle a {
   position: relative;
   margin-bottom: 2%;
@@ -60,6 +63,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 #welcomeTitle p {
   font-size: 7vw;
   font-family: "Helvetica Neue W02 75 Bold", "Bangers", cursive;
@@ -106,6 +110,7 @@ span {
   letter-spacing: 0.532vw;
   transition: 0.25s all ease;
 }
+
 .primary:hover {
   background-color: black;
   outline: none;
@@ -125,6 +130,7 @@ span {
   font-size: 2.234vw;
   transition: 0.25s all ease;
 }
+
 .btn-secondary:hover {
   color: black;
   background: white;
@@ -136,11 +142,13 @@ nav {
   background-color: black;
   color: white;
 }
+
 nav ul {
   display: flex;
   float: right;
   list-style: none;
 }
+
 nav ul li {
   font-size: 1.25vw;
   width: 7rem;
@@ -184,6 +192,7 @@ nav ul li {
   display: flex;
   font-size: 1.14rem;
 }
+
 .members div {
   position: relative;
   width: 50%;
@@ -213,6 +222,7 @@ nav ul li {
   margin: 0;
   border: 1.5px solid black;
 }
+
 #message-form button {
   width: 15%;
   height: 7.4vh;
@@ -235,6 +245,7 @@ nav ul li {
   margin-bottom: 0.524rem;
   position: relative;
 }
+
 .message span {
   font-size: 0.647rem;
   font-weight: bold;
@@ -276,7 +287,7 @@ nav ul li {
 
 #questionCardContainer {
   border-bottom: 1px solid black;
-  height: 54vh;
+  height: 89vh;
   width: 20vw;
   border-right: 1px solid black;
   overflow: scroll;
@@ -287,15 +298,15 @@ nav ul li {
   position: absolute;
   justify-content: space-between;
   bottom: 0;
-  left: 0;
-  height: 35vh;
-  width: 80vw;
-  border-bottom: 1px solid black;
+  left: 22vw;
+  right: 2vw;
+  height: 34vh;
+  width: 56vw;
+  border: 1px solid black;
   overflow-x: scroll;
 }
 
 #submissions {
-  border-bottom: 1px solid black;
   width: 60vw;
   height: 54vh;
   position: absolute;
@@ -304,6 +315,7 @@ nav ul li {
   flex-wrap: wrap;
   overflow-y: scroll;
 }
+
 #submissions .cardContainer {
   height: 30vh;
   border-bottom: 1px solid black;
@@ -344,6 +356,7 @@ nav ul li {
   height: 8vh;
   font-size: 1.242vw;
 }
+
 .roundInfo button {
   position: absolute;
   top: 7vh;
@@ -359,6 +372,7 @@ nav ul li {
   right: 0;
   top: 11vh;
 }
+
 #toggle div {
   border-bottom: 1px solid black;
   width: 10vw;
