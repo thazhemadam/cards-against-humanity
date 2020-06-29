@@ -1,3 +1,11 @@
+const _id = sessionStorage.getItem('roomid');
+const userid = sessionStorage.getItem('userid');
+
+if(!_id || !userid){
+    alert('Oops. Looks like you got lost.');
+    window.location.href = '/'
+}
+else{
 const socket = io();
 const {name, room}=Qs.parse(location.search, {ignoreQueryPrefix: true});
 console.log((Qs.parse(location.search, {ignoreQueryPrefix: true})));
@@ -5,7 +13,6 @@ console.log((Qs.parse(location.search, {ignoreQueryPrefix: true})));
 
 //Copy the room id to clipboard when the "Copy Link" button is clicked.
 const $copylink = document.getElementById('copy-link');
-const _id = sessionStorage.getItem('id');
 const $logout = document.getElementById('logout');
 $copylink.addEventListener("click", (e) => {
     let $temp = $("<input>");
@@ -16,8 +23,9 @@ $copylink.addEventListener("click", (e) => {
 });
 
 $logout.addEventListener("click", (e)=> {
-    sessionStorage.removeItem('id');
     window.location.href='/';
+    sessionStorage.removeItem('roomid');
+    sessionStorage.removeItem('userid');
 });
 
 const $messageForm = document.getElementById('message-form')
@@ -87,96 +95,99 @@ $messageForm.addEventListener('submit',(e)=>{
     })
 })
 
-socket.emit('join',{name, room:_id}, (error)=>{
-    if(error){
-        alert(error)
-        location.href = '/'
-    }
-    console.log('Client joined to socket server.')
-})
-
-socket.on('roomData',({roomName, usersInRoom, question})=>{
-    const html = Mustache.render(document.getElementById('sidebar-template').innerHTML, {
-        roomName,
-        usersInRoom
+// if()
+// {
+    socket.emit('join',{name, room:_id}, userid, (error)=>{
+        if(error){
+            alert(error)
+            location.href = '/'
+        }
+        console.log('Client joined to socket server.')
     })
-    document.getElementById('detailsandstats').innerHTML = html
-    document.getElementById('roomName').textContent=roomName;
-    document.getElementById('question').textContent=question;
-})
+
+    socket.on('roomData',({roomName, usersInRoom, question})=>{
+        const html = Mustache.render(document.getElementById('sidebar-template').innerHTML, {
+            roomName,
+            usersInRoom
+        })
+        document.getElementById('detailsandstats').innerHTML = html
+        document.getElementById('roomName').textContent=roomName;
+        document.getElementById('question').textContent=question;
+    })
 
 
-socket.on('message',(message, sender)=>{
-    const html = Mustache.render(messageTemplate,{
-                                                    chat_message: true,
-                                                    User: sender,
-                                                    messageTime: moment(message.createdAt).format('h:mm a'),
-                                                    messageDisplay:message.content
-                                                })
-    $messagesTemplateArea.insertAdjacentHTML('beforeend',html)
-    autoscroll()
-}) 
+    socket.on('message',(message, sender)=>{
+        const html = Mustache.render(messageTemplate,{
+                                                        chat_message: true,
+                                                        User: sender,
+                                                        messageTime: moment(message.createdAt).format('h:mm a'),
+                                                        messageDisplay:message.content
+                                                    })
+        $messagesTemplateArea.insertAdjacentHTML('beforeend',html)
+        autoscroll()
+    }) 
 
-socket.on('toast',(toast)=>{
-    const html = Mustache.render(messageTemplate,{
-                                                    chat_toast: true,
-                                                    toastDisplay: toast
-                                                })
-    $messagesTemplateArea.insertAdjacentHTML('beforeend',html)
-    autoscroll()
-}) 
+    socket.on('toast',(toast)=>{
+        const html = Mustache.render(messageTemplate,{
+                                                        chat_toast: true,
+                                                        toastDisplay: toast
+                                                    })
+        $messagesTemplateArea.insertAdjacentHTML('beforeend',html)
+        autoscroll()
+    }) 
 
-let selectedCard="";
+    let selectedCard="";
 
-socket.on('answerCards', ({answers})=>{
-    document.getElementById('answerCardsContainer').innerHTML='';
+    socket.on('answerCards', ({answers})=>{
+        document.getElementById('answerCardsContainer').innerHTML='';
 
-    answers.map(ans=>{
-        let div=document.createElement('div');
-        div.classList.add('cardContainer');
-        let answerCard=document.createElement('div');
-        answerCard.classList.add('card');
-        answerCard.style.backgroundColor='white';
-        answerCard.style.color='black';
-        answerCard.textContent=ans;
-        div.appendChild(answerCard);
-        document.getElementById('answerCardsContainer').appendChild(div);
-    });
-    
-    let answerCards=[...document.querySelectorAll('#answerCardsContainer .cardContainer')];
-
-    if(selectedCard===""){
-        answerCards.map(answer=>{
-           answer.addEventListener('click', ()=>{
-                answerCards.map(ans=>ans.style.backgroundColor="white");
-                answer.style.backgroundColor="rgb(1, 103, 255)";
-                selectedCard=answer.textContent;
-           });
+        answers.map(ans=>{
+            let div=document.createElement('div');
+            div.classList.add('cardContainer');
+            let answerCard=document.createElement('div');
+            answerCard.classList.add('card');
+            answerCard.style.backgroundColor='white';
+            answerCard.style.color='black';
+            answerCard.textContent=ans;
+            div.appendChild(answerCard);
+            document.getElementById('answerCardsContainer').appendChild(div);
         });
-    }
-});
+        
+        let answerCards=[...document.querySelectorAll('#answerCardsContainer .cardContainer')];
 
-document.querySelector('.roundInfo button').addEventListener('click', ()=>{
-    let answerCards=[...document.querySelectorAll('#answerCardsContainer .cardContainer')];
-    let answer=answerCards.find(ans=>ans.textContent===selectedCard);
-    if(answer!==undefined){
-        document.getElementById('answerCardsContainer').removeChild(answer);
-        let answerCard=answer.textContent;
-        answerCards=[...document.querySelectorAll('#answerCardsContainer .cardContainer')];
-        let answerTexts=answerCards.map(ans=>ans.textContent);
-        let roomName=document.getElementById('roomName').textContent;
-        // selectedCard="";
-        socket.emit('newAnswerCard', {answerTexts, answerCard, room:_id});
-        // socket.emit('submitAnswer', {answer, roomName});
-    }else{alert("Choose a card to answer the question");}
-});
+        if(selectedCard===""){
+            answerCards.map(answer=>{
+            answer.addEventListener('click', ()=>{
+                    answerCards.map(ans=>ans.style.backgroundColor="white");
+                    answer.style.backgroundColor="rgb(1, 103, 255)";
+                    selectedCard=answer.textContent;
+            });
+            });
+        }
+    });
 
-socket.on('submitAnswer', (answerCard)=>{
-    let div1=document.createElement('div');
-    div1.classList.add('cardContainer');
-    let div2=document.createElement('div');
-    div2.classList.add('card');
-    div2.innerHTML=`<img class="loading" src="../assets/loading.svg" alt="loading"><br/>Waiting for other players`;
-    div1.appendChild(div2);
-    document.getElementById('submissions').appendChild(div1);
-});
+    document.querySelector('.roundInfo button').addEventListener('click', ()=>{
+        let answerCards=[...document.querySelectorAll('#answerCardsContainer .cardContainer')];
+        let answer=answerCards.find(ans=>ans.textContent===selectedCard);
+        if(answer!==undefined){
+            document.getElementById('answerCardsContainer').removeChild(answer);
+            let answerCard=answer.textContent;
+            answerCards=[...document.querySelectorAll('#answerCardsContainer .cardContainer')];
+            let answerTexts=answerCards.map(ans=>ans.textContent);
+            let roomName=document.getElementById('roomName').textContent;
+            // selectedCard="";
+            socket.emit('newAnswerCard', {answerTexts, answerCard, room:_id});
+            // socket.emit('submitAnswer', {answer, roomName});
+        }else{alert("Choose a card to answer the question");}
+    });
+
+    socket.on('submitAnswer', (answerCard)=>{
+        let div1=document.createElement('div');
+        div1.classList.add('cardContainer');
+        let div2=document.createElement('div');
+        div2.classList.add('card');
+        div2.innerHTML=`<img class="loading" src="../assets/loading.svg" alt="loading"><br/>Waiting for other players`;
+        div1.appendChild(div2);
+        document.getElementById('submissions').appendChild(div1);
+    });
+}

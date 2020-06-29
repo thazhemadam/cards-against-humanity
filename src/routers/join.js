@@ -1,4 +1,5 @@
 const express = require('express');
+const short = require('short-uuid')
 const {sessions} = require('../utils/sessions')
 
 const join = new express.Router();
@@ -18,7 +19,10 @@ join.get('/join', async (req,res)=>{
     if(!_status){
         return res.send({error: "Requested room doesn't exist"})
     }
-    res.send({roomName: sessions.get(UUID)});
+    res.send({
+        roomName: sessions.get(UUID),
+        userid: short.generate()
+    });
 })
 
 module.exports = join;
