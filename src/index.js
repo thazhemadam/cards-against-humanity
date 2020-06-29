@@ -20,8 +20,6 @@ fs.readFileSync('data/black.json', (err, data)=>{
 
 io.on('connection',(socket)=>{
     console.log('New WebSocket Connection.')
-    socket.emit('message','Welcome.')
-    socket.broadcast.emit('message','A new user has joined.');
 
     socket.on('join',({name, room}, callback)=>{
         
@@ -36,11 +34,15 @@ io.on('connection',(socket)=>{
         }
     
         // console.log('Successfully logged ' + newUser.name + ' into '+sessions.get(newUser.room)+' - '+ newUser.room +'.')
-        socket.join(newUser.room)
-    
-        socket.emit('toast', 'Welcome to the room.')
+        socket.join(newUser.room);
+
+        socket.emit('toast', 'Welcome to the room.');
         socket.broadcast.to(newUser.room).emit('toast', `${newUser.username} has joined the party!`)
 
+        if(getUsersInRoom(newUser.room).length<3){
+            return socket.emit('toast', `${3-getUsersInRoom(newUser.room).length} more "friends", and you can get this party started!`);
+        }
+        
         // console.log('This is get users in room '+JSON.stringify(getUsersInRoom(newUser.room), null, 4))
         //Send the room's details to the room into which the new user just joined.
         io.to(newUser.room).emit('roomData',{
@@ -61,11 +63,6 @@ io.on('connection',(socket)=>{
             }
             socket.emit('answerCards', {answers: ansArr});
         });
-
-        // if(getUsersInRoom.length<3)
-        //     socket.emit('sendAlert','Please wait for more users to join.')
-
-        // socket.emit('Please wait for the room-host to begin the new round.');
 
         callback()  //Represents no error in logging in
     })
