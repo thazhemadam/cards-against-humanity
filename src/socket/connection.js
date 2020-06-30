@@ -117,9 +117,7 @@ const connection = (socket, io) => {
 
     socket.on('disconnect', () => {
 
-        if (!socket.id) {
-            return
-        }
+        if (!socket.id) {return;}
         changeLoginStatus(socket.id);
 
 
