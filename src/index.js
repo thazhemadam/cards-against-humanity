@@ -1,10 +1,7 @@
 const app = require('./app');
 const http = require('http');
 const socketio = require('socket.io');
-const fs=require('fs');
 
-const { sessions, addUser, removeUser, getUser, getUsersInRoom } = require('./utils/sessions');
-const {generateMessage} = require('./utils/messages');
 const connection = require('./socket/connection')
 
 

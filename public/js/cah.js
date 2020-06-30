@@ -23,9 +23,13 @@ $copylink.addEventListener("click", (e) => {
 });
 
 $logout.addEventListener("click", (e)=> {
-    window.location.href='/';
+    // window.location.href='/';
     sessionStorage.removeItem('roomid');
     sessionStorage.removeItem('userid');
+    socket.emit('logout', () => {
+        console.log('Logging out - Client.')
+        window.location.href = '/'
+    })
 });
 
 const $messageForm = document.getElementById('message-form')

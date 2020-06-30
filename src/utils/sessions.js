@@ -9,12 +9,14 @@ const addUser = ({id, username, room, userSessionID, points}) => {
 
     let updateIndex = usersActive.findIndex((existingUser)=> existingUser.userSessionID === userSessionID)
     if(updateIndex !== -1){
+        console.log('Updating LoggedIn status.' + id)
         usersActive[updateIndex] = {...usersActive[updateIndex], id, loggedIn:true}
         console.log('Users active is :'+JSON.stringify(usersActive, null, 4))
         return {newUser: usersActive[updateIndex], newlyJoined:false}
     }
     //Store user.
     else {
+        console.log('Adding new user.')
         const newUser = {id, username, room, points, userSessionID, loggedIn: true}
         usersActive.push(newUser)
         console.log('Users active is :'+JSON.stringify(usersActive, null, 4))

@@ -2,12 +2,12 @@ const fs = require('fs');
 const {
     sessions,
     addUser,
-    removeUser,
     getUser,
     getUsersInRoom,
     changeLoginStatus
 } = require('../utils/sessions');
-const sendMessage = require('./sendMessage');
+const sendMessage = require('./events/sendMessage');
+const logout = require('./events/logout')
 
 let question = "";
 
@@ -18,7 +18,7 @@ fs.readFile('data/black.json', (err, data) => {
 });
 
 const connection = (socket, io) => {
-    console.log('New WebSocket Connection.')
+    console.log('New WebSocket Connection : '+socket.id)
 
     socket.on('join', ({
         name,
@@ -50,7 +50,7 @@ const connection = (socket, io) => {
 
         if(!newlyJoined){
                 socket.emit('toast', 'Welcome back to the room.');
-                socket.broadcast.to(newUser.room).emit('toast', `${newUser.username} lost his way for a second there, but is back now!`)
+                socket.broadcast.to(newUser.room).emit('toast', `${newUser.username} lost their way for a second there, but is back now!`)
         }
         else{
             socket.emit('toast', 'Welcome to the room.');
@@ -113,34 +113,25 @@ const connection = (socket, io) => {
         sendMessage(socket, io, message, callback)
     })
 
-
+    socket.on('logout', (callback) => {
+        console.log('Logout Event called.')
+        changeLoginStatus(socket.id);
+        logout(io, socket);
+        callback();
+    })
 
     socket.on('disconnect', () => {
-
-        if (!socket.id) {return;}
+                
+        if (!getUser(socket.id)) {
+            return;
+        }
+        console.log('Disconnecting.')
         changeLoginStatus(socket.id);
-
-
         setTimeout(() => {
-
-            let removedUser;
-            // console.log('Disconnect event called.')
-            if (!getUser(socket.id).loggedIn) {
-                removedUser = removeUser(socket.id)
-            }
-            if (removedUser) {
-                console.log("Removing the user..")
-                io.to(removedUser.room).emit('toast', `${removedUser.username} has left the server.`)
-                io.to(removedUser.room).emit('roomData', {
-                    roomName: sessions.get(removedUser.room),
-                    usersInRoom: getUsersInRoom(removedUser.room)
-                })
-                console.log(getUsersInRoom(removedUser.room))
-            }
+            logout(io, socket);
         }, (5000));
 
     })
 }
-
 
 module.exports = connection;
