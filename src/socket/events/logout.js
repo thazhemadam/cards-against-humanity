@@ -8,7 +8,7 @@ const {
 module.exports  = (io, socket)=>{
     
     let removedUser;
-    console.log('Logout event called.' + socket.id)
+    console.log(`Logout event called. + ${socket.id}`)
     const {error, loggedIn} = getUser(socket.id)
     if(error){
         return;
@@ -17,12 +17,17 @@ module.exports  = (io, socket)=>{
         removedUser = removeUser(socket.id)
     }
     if (removedUser) {
-        console.log("Removing the user..")
-        io.to(removedUser.room).emit('toast', `${removedUser.username} has left the server.`)
-        io.to(removedUser.room).emit('roomData', {
-            roomName: sessions.get(removedUser.room),
-            usersInRoom: getUsersInRoom(removedUser.room)
+        console.log("\nRemoving the user")
+        const removedUserRoom = removedUser.room
+        io.to(removedUserRoom).emit('toast', `${removedUser.username} has left the server.`)
+        io.to(removedUserRoom).emit('roomData', {
+            roomName: sessions.get(removedUserRoom),
+            usersInRoom: getUsersInRoom(removedUserRoom)
         })
-        console.log(getUsersInRoom(removedUser.room))
+        if(getUsersInRoom(removedUserRoom).length === 0){
+            sessions.delete(removedUserRoom)
+            console.log(`Removed room : ${removedUserRoom}`)
+        }
+        console.log(getUsersInRoom(removedUserRoom))
     }
 }
