@@ -4,7 +4,7 @@ let sessions = new Map();
 let usersActive = []
 //Created to handle users.
 
-const addUser = ({id, username, room, userSessionID, points}) => {
+const addUser = ({id, username, room, userSessionID, points, answerCards, question}) => {
     //Clean how the data looks.
 
     let updateIndex = usersActive.findIndex((existingUser)=> existingUser.userSessionID === userSessionID)
@@ -17,7 +17,7 @@ const addUser = ({id, username, room, userSessionID, points}) => {
     //Store user.
     else {
         console.log('Adding new user.')
-        const newUser = {id, username, room, points, userSessionID, loggedIn: true}
+        const newUser = {id, username, room, points, userSessionID, loggedIn: true, question, answerCards}
         usersActive.push(newUser)
         console.log('Users active is :'+JSON.stringify(usersActive, null, 4))
         return {newUser, newlyJoined:true}

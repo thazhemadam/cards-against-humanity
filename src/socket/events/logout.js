@@ -10,6 +10,7 @@ module.exports  = (io, socket)=>{
     let removedUser;
     console.log(`Logout event called. + ${socket.id}`)
     const {error, loggedIn} = getUser(socket.id)
+    // console.log(loggedIn);
     if(error){
         return;
     }
