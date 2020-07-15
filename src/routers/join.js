@@ -1,11 +1,11 @@
 const express = require('express');
 const short = require('short-uuid')
-const {sessions} = require('../utils/sessions')
+const {getSession} = require('../utils/sessions')
 
 const join = new express.Router();
 
 const checkAuthenticationStatus = (UUID) => {
-    return sessions.has(UUID);
+    return !!getSession(UUID);
 }
 
 join.get('/join', async (req,res)=>{
@@ -20,7 +20,7 @@ join.get('/join', async (req,res)=>{
         return res.send({error: "Requested room doesn't exist"})
     }
     res.send({
-        roomName: sessions.get(UUID),
+        roomName: getSession(UUID),
         userid: short.generate()
     });
 })

@@ -1,10 +1,36 @@
 //sessions is used to track the sessions that are currently active.
-let sessions = new Map();
+let sessions = [];
 
 let usersActive = []
 //Created to handle users.
 
-const addUser = ({id, username, room, userSessionID, points, answerCards, question}) => {
+const addSession = (_id, roomName ) => {
+    sessions.push({
+        id: _id,
+        roomName,
+        question: undefined,
+        card_czar: undefined
+    })
+    console.log('Sessions : '+JSON.stringify(sessions, null, 4));
+}
+
+const getSession = (_id) => {
+    let updateIndex = sessions.findIndex((user)=> user.id === _id)
+    if(updateIndex!= -1){
+        return sessions[updateIndex].roomName
+    }
+    return undefined
+}
+
+const removeSession = (_id) => {
+    let removeIndex = sessions.findIndex((user)=> user.id === _id);
+    if(removeIndex!= -1){
+        sessions.splice(removeIndex, 1)
+    }
+}
+
+
+const addUser = ({id, username, room, userSessionID, points}) => {
     //Clean how the data looks.
 
     let updateIndex = usersActive.findIndex((existingUser)=> existingUser.userSessionID === userSessionID)
@@ -17,7 +43,7 @@ const addUser = ({id, username, room, userSessionID, points, answerCards, questi
     //Store user.
     else {
         console.log('Adding new user.')
-        const newUser = {id, username, room, points, userSessionID, loggedIn: true, question, answerCards}
+        const newUser = {id, username, room, points, userSessionID, loggedIn: true, answerCards:[]}
         usersActive.push(newUser)
         console.log('Users active is :'+JSON.stringify(usersActive, null, 4))
         return {newUser, newlyJoined:true}
@@ -61,7 +87,9 @@ const changeLoginStatus = (id) => {
 }
 
 module.exports = {
-    sessions,
+    addSession,
+    getSession,
+    removeSession,
     addUser,
     removeUser,
     getUser,

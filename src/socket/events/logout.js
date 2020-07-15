@@ -1,5 +1,6 @@
 const {
-    sessions,
+    getSession,
+    removeSession,
     removeUser,
     getUser,
     getUsersInRoom,
@@ -22,11 +23,11 @@ module.exports  = (io, socket)=>{
         const removedUserRoom = removedUser.room
         io.to(removedUserRoom).emit('toast', `${removedUser.username} has left the server.`)
         io.to(removedUserRoom).emit('roomData', {
-            roomName: sessions.get(removedUserRoom),
+            roomName: getSession(removedUserRoom),
             usersInRoom: getUsersInRoom(removedUserRoom)
         })
         if(getUsersInRoom(removedUserRoom).length === 0){
-            sessions.delete(removedUserRoom)
+            removeSession(removedUserRoom)
             console.log(`Removed room : ${removedUserRoom}`)
         }
         console.log(getUsersInRoom(removedUserRoom))

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const {
-    sessions,
+    getSession,
     addUser,
     getUser,
     getUsersInRoom,
@@ -21,29 +21,28 @@ const connection = (socket, io) => {
         room
     }, userSessionID, callback) => {
         //Since addUser returns an "error", and "user" object respectively.
-        if (!sessions.has(room)) {
+        if (!getSession(room)) {
             return callback('Shoo. Scat. No shortcuts. Either join a room the right way, or make your own.')
         }
         
-        fs.readFile('data/black.json', (err, data) => {
-            if (err) throw err;
-            let questionList = JSON.parse(data.toString());
-            question = questionList[Math.floor(Math.random() * Math.floor(questionList.length - 1))].text;
-        });
+        // fs.readFile('data/black.json', (err, data) => {
+        //     if (err) throw err;
+        //     let questionList = JSON.parse(data.toString());
+        //     question = questionList[Math.floor(Math.random() * Math.floor(questionList.length - 1))].text;
+        // });
 
-        fs.readFile('data/white.json', (err, data) => {
-            if (err) throw err;
-            let answerList = JSON.parse(data);
-            ansArr=[];
-            for (let i = 0; i < 10; ++i) {
-                let answer = answerList[Math.floor(Math.random() * Math.floor(answerList.length - 1))].text;
-                let index = ansArr.findIndex(item => item === answer);
-                if (index === -1) {
-                    ansArr.push(answer);
-                }
-            }
-        });
-
+        // fs.readFile('data/white.json', (err, data) => {
+        //     if (err) throw err;
+        //     let answerList = JSON.parse(data);
+        //     ansArr=[];
+        //     for (let i = 0; i < 10; ++i) {
+        //         let answer = answerList[Math.floor(Math.random() * Math.floor(answerList.length - 1))].text;
+        //         let index = ansArr.findIndex(item => item === answer);
+        //         if (index === -1) {
+        //             ansArr.push(answer);
+        //         }
+        //     }
+        // });
 
         const {
             error,
@@ -54,9 +53,7 @@ const connection = (socket, io) => {
             username: name,
             room,
             userSessionID,
-            points: 0,
-            question: question,
-            answerCards: ansArr
+            points: 0
         });
 
         if (error) {
@@ -84,13 +81,13 @@ const connection = (socket, io) => {
             
             // console.log('This is get users in room '+JSON.stringify(getUsersInRoom(newUser.room), null, 4))
             //Send the room's details to the room into which the new user just joined.
-        socket.emit('answerCards', {answers: ansArr});
-        io.to(newUser.room).emit('roomData', {
-            // test: 'Console.log' 
-            roomName: sessions.get(newUser.room),
-            usersInRoom: getUsersInRoom(newUser.room),
-            question: question
-        });
+        // socket.emit('answerCards', {answers: ansArr});
+        // io.to(newUser.room).emit('roomData', {
+        //     // test: 'Console.log' 
+        //     roomName: getSession(newUser.room),
+        //     usersInRoom: getUsersInRoom(newUser.room),
+        //     question: question
+        // });
 
         callback() //Represents no error in logging in
     })

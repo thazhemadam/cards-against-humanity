@@ -7,7 +7,7 @@ const express = require('express');
 const short = require('short-uuid')
 
 
-const {sessions} = require('../utils/sessions')
+const {addSession} = require('../utils/sessions')
 
 const host = new express.Router();
 
@@ -22,7 +22,7 @@ host.get('/host', async (req, res) => {
     const _id = short.generate();
     const user_id = short.generate();
     console.log(`The room ${roomName}  has been assigned the id ${_id}`);
-    sessions.set(_id, roomName);
+    addSession(_id, roomName);
     // console.log(sessions);
     res.send({_id, user_id});
 })
