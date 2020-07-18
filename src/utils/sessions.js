@@ -15,35 +15,45 @@ const addSession = (_id, roomName ) => {
 }
 
 const getSession = (_id) => {
-    let updateIndex = sessions.findIndex((user)=> user.id === _id)
-    if(updateIndex!= -1){
-        return sessions[updateIndex].roomName
+    let updateIndex = sessions.findIndex(user=> user.id === _id)
+    if(updateIndex!== -1){
+        return sessions[updateIndex]
     }
     return undefined
 }
 
+const setData=(_id, question, card_czar)=>{
+    let index=sessions.findIndex(user=>user.id===_id);
+    if(index!==-1){
+        sessions[index].question=question;
+        sessions[index].card_czar=card_czar;
+        return sessions[index];
+    }
+    return undefined;
+}
+
 const removeSession = (_id) => {
     let removeIndex = sessions.findIndex((user)=> user.id === _id);
-    if(removeIndex!= -1){
+    if(removeIndex!== -1){
         sessions.splice(removeIndex, 1)
     }
 }
 
 
-const addUser = ({id, username, room, userSessionID, points}) => {
+const addUser = ({id, username, room, userSessionID, points, answerCards}) => {
     //Clean how the data looks.
 
     let updateIndex = usersActive.findIndex((existingUser)=> existingUser.userSessionID === userSessionID)
     if(updateIndex !== -1){
         console.log('Updating LoggedIn status.' + id)
-        usersActive[updateIndex] = {...usersActive[updateIndex], id, loggedIn:true}
+        usersActive[updateIndex] = {...usersActive[updateIndex], id, loggedIn:true, answerCards};
         console.log('Users active is :'+JSON.stringify(usersActive, null, 4))
         return {newUser: usersActive[updateIndex], newlyJoined:false}
     }
     //Store user.
     else {
         console.log('Adding new user.')
-        const newUser = {id, username, room, points, userSessionID, loggedIn: true, answerCards:[]}
+        const newUser = {id, username, room, points, answerCards, userSessionID, loggedIn: true};
         usersActive.push(newUser)
         console.log('Users active is :'+JSON.stringify(usersActive, null, 4))
         return {newUser, newlyJoined:true}
@@ -67,8 +77,8 @@ const getUser = (id) => {
     const user = usersActive.find((eachActiveUser)=> eachActiveUser.id === id)
     if(user === undefined)
         return {
-                error: 'User does not exist.'
-            }
+            error: 'User does not exist.'
+        }
     return user
 }
 
@@ -89,6 +99,7 @@ const changeLoginStatus = (id) => {
 module.exports = {
     addSession,
     getSession,
+    setData,
     removeSession,
     addUser,
     removeUser,

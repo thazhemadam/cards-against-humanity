@@ -10,10 +10,8 @@ const getRoomID = async (name) => {
 $hostRoom = document.getElementById('host-room');
 $hostRoom.addEventListener('submit', async (e)=>{
     e.preventDefault();
-    console.log('Beginning to host room.')
     const $name=document.getElementById('host-name').value.trim();    //host-name
-    let roomName=document.getElementById('room-name').value.trim(); //room-name
-    console.log('Name: '+$name+' Room: '+roomName)
+    let roomName=document.getElementById('room-name').value.trim();   //room-name
 
     const {_id, user_id} = await getRoomID(roomName).then((data)=>(data)).catch(err=>console.log(err));
     console.log('Room ID generated: '+_id)
